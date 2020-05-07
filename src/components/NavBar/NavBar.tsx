@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { NavLink, withRouter } from "react-router-dom";
-import Routes from "../../Routes";
+import { NavLink, withRouter, RouteComponentProps } from "react-router-dom";
+import Routes, { IRoute } from "../../Routes";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
@@ -47,7 +47,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 // NavBar component
-const NavBar: React.FC = (props: any) => {
+const NavBar: React.FC<RouteComponentProps> = ({
+  history,
+  location,
+  match,
+}: RouteComponentProps) => {
   const classes = useStyles();
 
   // State hook that toggles drawer
@@ -67,8 +71,8 @@ const NavBar: React.FC = (props: any) => {
   };
 
   // Check if a route is currently active
-  const activeRoute = (routeName: String) => {
-    return props.location.pathname === routeName;
+  const activeRoute = (routeName: String): boolean => {
+    return location.pathname === routeName;
   };
 
   return (
@@ -109,7 +113,7 @@ const NavBar: React.FC = (props: any) => {
           onKeyDown={toggleDrawer(false)}
         >
           <MenuList>
-            {Routes.map((prop, key) => {
+            {Routes.map((prop: IRoute, key) => {
               return (
                 <NavLink
                   to={prop.path}
