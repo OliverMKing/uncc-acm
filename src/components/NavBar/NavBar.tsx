@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { NavLink, withRouter } from "react-router-dom";
+import Routes from "../../Routes";
+
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
@@ -8,11 +11,15 @@ import {
   Toolbar,
   Typography,
   IconButton,
+  MenuList,
+  MenuItem,
+  ListItemText,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import logo from "../../images/acm-white.png";
 
+// Define styles of components
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -30,10 +37,17 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       flexGrow: 1,
     },
+    drawer: {
+      width: 300,
+    },
+    fullList: {
+      width: "auto",
+    },
   })
 );
 
-const NavBar: React.FC = () => {
+// NavBar component
+const NavBar: React.FC = (props: any) => {
   const classes = useStyles();
 
   // State hook that toggles drawer
@@ -52,6 +66,11 @@ const NavBar: React.FC = () => {
     setIsOpen(open);
   };
 
+  // Check if a route is currently active
+  const activeRoute = (routeName: String) => {
+    return props.location.pathname === routeName;
+  };
+
   return (
     <div>
       <div className={classes.root}>
@@ -66,19 +85,48 @@ const NavBar: React.FC = () => {
             >
               <MenuIcon />
             </IconButton>
-            <div className={classes.title}>
+            <NavLink
+              className={classes.title}
+              style={{ textDecoration: "none", color: "white" }}
+              to="/"
+            >
               <img src={logo} className={classes.logo} alt="ACM Logo" />
               <Typography variant="h6">UNCC ACM</Typography>
-            </div>
+            </NavLink>
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
       </div>
-      <Drawer open={isOpen} onClose={toggleDrawer(false)}>
-        This is my menu
+      <Drawer
+        classes={{ paper: classes.drawer }}
+        open={isOpen}
+        onClose={toggleDrawer(false)}
+      >
+        <div
+          className={classes.fullList}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <MenuList>
+            {Routes.map((prop, key) => {
+              return (
+                <NavLink
+                  to={prop.path}
+                  style={{ textDecoration: "none" }}
+                  key={key}
+                >
+                  <MenuItem selected={activeRoute(prop.path)}>
+                    <ListItemText primary={prop.name} />
+                  </MenuItem>
+                </NavLink>
+              );
+            })}
+          </MenuList>
+        </div>
       </Drawer>
     </div>
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
