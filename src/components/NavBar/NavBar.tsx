@@ -7,6 +7,8 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
   Button,
+  ButtonBase,
+  Container,
   Drawer,
   Toolbar,
   Typography,
@@ -24,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+    },
+    toolbar: {
+      paddingLeft: 0,
     },
     menuButton: {
       marginRight: theme.spacing(4),
@@ -79,26 +84,30 @@ const NavBar: React.FC<RouteComponentProps> = ({
     <div>
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <NavLink
-              className={classes.title}
-              style={{ textDecoration: "none", color: "white" }}
-              to="/"
-            >
-              <img src={logo} className={classes.logo} alt="ACM Logo" />
-              <Typography variant="h6">UNCC ACM</Typography>
-            </NavLink>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
+          <Container maxWidth="md">
+            <Toolbar className={classes.toolbar}>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <NavLink
+                className={classes.title}
+                style={{ textDecoration: "none", color: "white" }}
+                to="/"
+              >
+                <ButtonBase focusRipple>
+                  <img src={logo} className={classes.logo} alt="ACM Logo" />
+                  <Typography variant="h6">UNCC ACM</Typography>
+                </ButtonBase>
+              </NavLink>
+              <Button color="inherit">Login</Button>
+            </Toolbar>
+          </Container>
         </AppBar>
       </div>
       <Drawer

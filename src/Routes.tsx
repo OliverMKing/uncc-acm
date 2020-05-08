@@ -1,9 +1,6 @@
 import React from "react";
 
-// Define components in path (this is a placeholder)
-const Home: React.FC = (): JSX.Element => {
-  return <h1>Home</h1>;
-};
+import Home from "./components/Home/Home";
 
 const Schedule: React.FC = (): JSX.Element => {
   return <h1>Schedule</h1>;
