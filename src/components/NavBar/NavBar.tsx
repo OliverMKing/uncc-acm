@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.spacing(3),
     },
     toolbar: {
-      paddingLeft: 0,
+      padding: 0,
     },
     menuButton: {
       marginRight: 36,
