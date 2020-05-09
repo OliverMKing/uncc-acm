@@ -1,0 +1,28 @@
+import React from "react";
+
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { Container } from "@material-ui/core";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    content: {
+      flexGrow: 1,
+      paddingTop: theme.spacing(6),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(9) + 1,
+      },
+    },
+  })
+);
+
+const Body: React.FC = ({ children }): JSX.Element => {
+  const classes = useStyles();
+
+  return (
+    <Container maxWidth="md" className={classes.content}>
+      {children}
+    </Container>
+  );
+};
+
+export default Body;

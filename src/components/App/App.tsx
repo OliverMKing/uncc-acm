@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import NavBar from "../NavBar/NavBar";
+import Body from "../Body/Body";
 import Routes, { IRoute } from "../../Routes";
 
 function App(): JSX.Element {
@@ -12,7 +13,9 @@ function App(): JSX.Element {
       <Switch>
         {Routes.map((route: IRoute) => (
           <Route exact path={route.path} key={route.path}>
-            <route.component />
+            <Body>
+              <route.component />
+            </Body>
           </Route>
         ))}
       </Switch>

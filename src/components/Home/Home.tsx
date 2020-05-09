@@ -1,7 +1,7 @@
 import React from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 import logo from "../../images/acm-color.png";
 
@@ -13,13 +13,6 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "none",
       },
     },
-    content: {
-      flexGrow: 1,
-      paddingTop: theme.spacing(6),
-      [theme.breakpoints.down("md")]: {
-        paddingLeft: theme.spacing(9) + 1,
-      },
-    },
   })
 );
 
@@ -27,7 +20,7 @@ const Home: React.FC = (): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="md" className={classes.content}>
+    <div>
       <Typography variant="h3" component="h3" align="left">
         Association for Computing Machinery
       </Typography>
@@ -43,15 +36,15 @@ const Home: React.FC = (): JSX.Element => {
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
         Our main focuses is on the logical methods used to solve interesting
-        computer science problems. The strategies we study are useful in
-        technical interviews and competitive programming.
+        computer science problems. The strategies we study are especially useful
+        in technical interviews and competitive programming.
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
         We also hold additional workshops on development methodologies and
         programming languages which you typically don't encounter in the
         classroom.
       </Typography>
-    </Container>
+    </div>
   );
 };
 
