@@ -164,6 +164,7 @@ const NavBar: React.FC<RouteComponentProps> = ({
               <NavLink
                 to={prop.path}
                 style={{ textDecoration: "none", color: "inherit" }}
+                onClick={toggleDrawer(false)}
               >
                 <ListItem button key={key} selected={activeRoute(prop.path)}>
                   <ListItemIcon>{<prop.icon />}</ListItemIcon>
