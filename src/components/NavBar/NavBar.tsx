@@ -161,7 +161,10 @@ const NavBar: React.FC<RouteComponentProps> = ({
         <List>
           {Routes.map((prop: IRoute, key) => {
             return (
-              <NavLink to={prop.path} style={{ textDecoration: "none" }}>
+              <NavLink
+                to={prop.path}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <ListItem button key={key} selected={activeRoute(prop.path)}>
                   <ListItemIcon>{<prop.icon />}</ListItemIcon>
                   <ListItemText primary={prop.name} />
