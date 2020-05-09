@@ -9,11 +9,14 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     logo: {
       float: "right",
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+      },
     },
     content: {
       flexGrow: 1,
       paddingTop: theme.spacing(6),
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         paddingLeft: theme.spacing(9) + 1,
       },
     },
