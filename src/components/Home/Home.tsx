@@ -1,16 +1,34 @@
 import React from "react";
 
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Container, Typography } from "@material-ui/core";
 
+import logo from "../../images/acm-color.png";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    logo: {
+      float: "right",
+    },
+    content: {
+      flexGrow: 1,
+      paddingTop: theme.spacing(6),
+    },
+  })
+);
+
 const Home: React.FC = (): JSX.Element => {
+  const classes = useStyles();
+
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" className={classes.content}>
       <Typography variant="h3" component="h3" align="left">
         Association for Computing Machinery
       </Typography>
-      <Typography variant="h4" component="h4" align="left" gutterBottom>
+      <Typography variant="h5" component="h5" align="left" gutterBottom>
         Student Chapter at the University of North Carolina at Charlotte
       </Typography>
+      <img src={logo} className={classes.logo} alt="ACM Logo" />
       <Typography variant="body1" align="left" gutterBottom paragraph>
         The local student chapter of a worldwide organization for computing
         professionals, delivering resources that advance computing as a science

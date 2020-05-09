@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 
 import { NavLink, withRouter, RouteComponentProps } from "react-router-dom";
 import Routes, { IRoute } from "../../Routes";
@@ -10,31 +11,50 @@ import {
   ButtonBase,
   Container,
   Drawer,
+  Divider,
   Toolbar,
   Typography,
   IconButton,
-  MenuList,
-  MenuItem,
+  List,
+  ListItem,
+  ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Menu, ChevronLeft } from "@material-ui/icons";
 
 import logo from "../../images/acm-white.png";
+
+const drawerWidth: number = 170;
 
 // Define styles of components
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1,
+      paddingBottom: theme.spacing(3),
     },
     toolbar: {
       paddingLeft: 0,
     },
     menuButton: {
-      marginRight: theme.spacing(4),
+      marginRight: 36,
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+    },
+    appBarShift: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
     },
     logo: {
-      maxHeight: 50,
+      maxHeight: 40,
       marginRight: theme.spacing(2),
     },
     title: {
@@ -43,10 +63,24 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     drawer: {
-      width: 300,
+      width: drawerWidth,
+      flexShrink: 0,
+      whiteSpace: "nowrap",
     },
-    fullList: {
-      width: "auto",
+    drawerOpen: {
+      width: drawerWidth,
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    drawerClose: {
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: "hidden",
+      width: theme.spacing(7) + 1,
     },
   })
 );
@@ -83,7 +117,7 @@ const NavBar: React.FC<RouteComponentProps> = ({
   return (
     <div>
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="fixed" className={classes.appBar}>
           <Container maxWidth="md">
             <Toolbar className={classes.toolbar}>
               <IconButton
@@ -91,9 +125,9 @@ const NavBar: React.FC<RouteComponentProps> = ({
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="menu"
-                onClick={toggleDrawer(true)}
+                onClick={toggleDrawer(!isOpen)}
               >
-                <MenuIcon />
+                <Menu />
               </IconButton>
               <NavLink
                 className={classes.title}
@@ -111,32 +145,38 @@ const NavBar: React.FC<RouteComponentProps> = ({
         </AppBar>
       </div>
       <Drawer
-        classes={{ paper: classes.drawer }}
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: isOpen,
+          [classes.drawerClose]: !isOpen,
+        })}
+        classes={{
+          paper: clsx({
+            [classes.drawerOpen]: isOpen,
+            [classes.drawerClose]: !isOpen,
+          }),
+        }}
         open={isOpen}
         onClose={toggleDrawer(false)}
       >
-        <div
-          className={classes.fullList}
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <MenuList>
-            {Routes.map((prop: IRoute, key) => {
-              return (
-                <NavLink
-                  to={prop.path}
-                  style={{ textDecoration: "none" }}
-                  key={key}
-                >
-                  <MenuItem selected={activeRoute(prop.path)}>
-                    <ListItemText primary={prop.name} />
-                  </MenuItem>
-                </NavLink>
-              );
-            })}
-          </MenuList>
+        <div className={classes.toolbar}>
+          <IconButton>
+            <ChevronLeft />
+          </IconButton>
         </div>
+        <Divider />
+        <List>
+          {Routes.map((prop: IRoute, key) => {
+            return (
+              <NavLink to={prop.path} style={{ textDecoration: "none" }}>
+                <ListItem button key={key} selected={activeRoute(prop.path)}>
+                  <ListItemIcon>{<prop.icon />}</ListItemIcon>
+                  <ListItemText primary={prop.name} />
+                </ListItem>
+              </NavLink>
+            );
+          })}
+        </List>
       </Drawer>
     </div>
   );
