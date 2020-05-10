@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "none",
       },
     },
+    grid: {
+      textAlign: "left",
+    },
   })
 );
 
@@ -82,29 +85,29 @@ const Home: React.FC = (): JSX.Element => {
       <Typography variant="h5" component="h5" align="left" gutterBottom>
         Current Officers
       </Typography>
-      <Grid container justify="flex-start">
-        <Grid item xs={8}>
+      <Grid container justify="flex-start" className={classes.grid}>
+        <Grid item xs={9} md={4}>
           <Typography>President — Oliver King</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3} md={8}>
           <LinkedIn /> <Email />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9} md={4}>
           <Typography>Vice President — Ed Nava</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3} md={8}>
           <LinkedIn /> <Email />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9} md={4}>
           <Typography>Secretary — Jacob Raymond</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3} md={8}>
           <LinkedIn /> <Email />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9} md={4}>
           <Typography>Treasurer — Mat Rizvanolli</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3} md={8}>
           <LinkedIn /> <Email />
         </Grid>
       </Grid>
