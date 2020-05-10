@@ -1,7 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
+import { Email, LinkedIn } from "@material-ui/icons";
 
 import logo from "../../images/acm-color.png";
 
@@ -37,12 +39,89 @@ const Home: React.FC = (): JSX.Element => {
       <Typography variant="body1" align="left" gutterBottom paragraph>
         Our main focuses is on the logical methods used to solve interesting
         computer science problems. The strategies we study are especially useful
-        in technical interviews and competitive programming.
+        in technical interviews and competitive programming. We also hold
+        additional workshops on development methodologies and programming
+        languages which you typically don't encounter in the classroom.
+      </Typography>
+      <Typography variant="h5" component="h5" align="left" gutterBottom>
+        New to ACM?
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
-        We also hold additional workshops on development methodologies and
-        programming languages which you typically don't encounter in the
-        classroom.
+        All students are welcome at our meetings. We cater to both experienced
+        programmers and complete beginners. Normal meetings are held twice a
+        week and cover a wide range of topics. Major events are held about every
+        other month. Every fall, we send teams of three to the{" "}
+        <a
+          href="https://icpc.baylor.edu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          International Collegiate Programming Contest (ICPC)
+        </a>
+        . Check the <NavLink to="/schedule">schedule</NavLink> to learn more.
+      </Typography>
+      <Typography variant="body1" align="left" gutterBottom paragraph>
+        New or prospective members should join us on{" "}
+        <a
+          href="https://discord.com/invite/JqrPUEn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discord
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://ninerengage.uncc.edu/organization/acm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Niner Engage
+        </a>{" "}
+        to receive periodic updates.
+      </Typography>
+      <Typography variant="h5" component="h5" align="left" gutterBottom>
+        Current Officers
+      </Typography>
+      <Grid container justify="flex-start">
+        <Grid item xs={8}>
+          <Typography>President — Oliver King</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <LinkedIn /> <Email />
+        </Grid>
+        <Grid item xs={8}>
+          <Typography>Vice President — Ed Nava</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <LinkedIn /> <Email />
+        </Grid>
+        <Grid item xs={8}>
+          <Typography>Secretary — Jacob Raymond</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <LinkedIn /> <Email />
+        </Grid>
+        <Grid item xs={8}>
+          <Typography>Treasurer — Mat Rizvanolli</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <LinkedIn /> <Email />
+        </Grid>
+      </Grid>
+      <Typography variant="h5" component="h5" align="left" gutterBottom>
+        Contact Us
+      </Typography>
+      <Typography variant="body1" align="left" gutterBottom paragraph>
+        You can email us at{" "}
+        <a
+          href="mailto:acm-uncc@uncc.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          acm-uncc@uncc.edu
+        </a>
+        . Any suggestions or topic requests are appreciated. We are open to
+        hosting employer events and forming corporate partnerships.
       </Typography>
     </div>
   );
