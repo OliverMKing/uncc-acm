@@ -90,25 +90,77 @@ const Home: React.FC = (): JSX.Element => {
           <Typography>President — Oliver King</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <LinkedIn /> <Email />
+          <a
+            href="https://www.linkedin.com/in/oliver-merkley-king/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn color="primary" />
+          </a>{" "}
+          <a
+            href="mailto:oking3@uncc.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Email color="primary" />
+          </a>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Vice President — Ed Nava</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <LinkedIn /> <Email />
+          <a
+            href="https://www.linkedin.com/in/ed-nava/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn color="primary" />
+          </a>{" "}
+          <a
+            href="mailto:enava@uncc.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Email color="primary" />
+          </a>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Secretary — Jacob Raymond</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <LinkedIn /> <Email />
+          <a
+            href="https://www.linkedin.com/in/jacob-raymond-3a3a45126/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn color="primary" />
+          </a>{" "}
+          <a
+            href="mailto:jraymon9@uncc.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Email color="primary" />
+          </a>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Treasurer — Mat Rizvanolli</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <LinkedIn /> <Email />
+          <a
+            href="https://www.linkedin.com/in/mat-rizvanolli-790920152/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn color="primary" />
+          </a>{" "}
+          <a
+            href="mailto:mrizvano@uncc.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Email color="primary" />
+          </a>
         </Grid>
       </Grid>
       <Typography variant="h5" component="h5" align="left" gutterBottom>
