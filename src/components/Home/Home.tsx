@@ -46,7 +46,7 @@ const Home: React.FC = (): JSX.Element => {
         additional workshops on development methodologies and programming
         languages which you typically don't encounter in the classroom.
       </Typography>
-      <Typography variant="h5" component="h5" align="left" gutterBottom>
+      <Typography variant="h4" component="h4" align="left" gutterBottom>
         New to ACM?
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
@@ -82,7 +82,7 @@ const Home: React.FC = (): JSX.Element => {
         </a>{" "}
         to receive periodic updates.
       </Typography>
-      <Typography variant="h5" component="h5" align="left" gutterBottom>
+      <Typography variant="h4" component="h4" align="left" gutterBottom>
         Current Officers
       </Typography>
       <Grid container justify="flex-start" className={classes.grid}>
@@ -163,7 +163,7 @@ const Home: React.FC = (): JSX.Element => {
           </a>
         </Grid>
       </Grid>
-      <Typography variant="h5" component="h5" align="left" gutterBottom>
+      <Typography variant="h4" component="h4" align="left" gutterBottom>
         Contact Us
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>

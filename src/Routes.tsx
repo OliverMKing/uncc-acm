@@ -3,6 +3,7 @@ import React from "react";
 import { Home, Event, ViewList, Folder } from "@material-ui/icons";
 
 import HomeComponent from "./components/Home/Home";
+import Resources from "./components/Resources/Resources";
 
 const Schedule: React.FC = (): JSX.Element => {
   return <h1>Schedule</h1>;
@@ -10,10 +11,6 @@ const Schedule: React.FC = (): JSX.Element => {
 
 const Problems: React.FC = (): JSX.Element => {
   return <h1>Problems</h1>;
-};
-
-const Resources: React.FC = (): JSX.Element => {
-  return <h1>Resources</h1>;
 };
 
 // Define and export route interface
