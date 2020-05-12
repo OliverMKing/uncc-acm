@@ -2,6 +2,7 @@ import React from "react";
 import {
   Grid,
   Typography,
+  Link,
   createStyles,
   makeStyles,
   Theme,
@@ -46,68 +47,68 @@ const Footer = () => {
         </Grid>
         <Grid item xs={4}>
           <Typography variant="body2" className={classes.left}>
-            <a
+            <Link
               href="https://discord.com/invite/JqrPUEn"
               target="_blank"
               rel="noopener noreferrer"
             >
               Discord
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={8}>
           <Typography variant="body2" className={classes.right}>
-            <a
+            <Link
               href="https://www.uncc.edu/"
               target="_blank"
               rel="noopener noreferrer"
             >
               University of North Carolina at Charlotte
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={4}>
           <Typography variant="body2" className={classes.left}>
-            <a
+            <Link
               href="https://ninerengage.uncc.edu/organization/acm"
               target="_blank"
               rel="noopener noreferrer"
             >
               Niner Engage
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={8}>
           <Typography variant="body2" className={classes.right}>
-            <a
+            <Link
               href="https://cci.uncc.edu/"
               target="_blank"
               rel="noopener noreferrer"
             >
               College of Computing and Informatics
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={4}>
           <Typography variant="body2" className={classes.left}>
-            <a
+            <Link
               href="mailto:acm-uncc@uncc.edu"
               target="_blank"
               rel="noopener noreferrer"
             >
               Email
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={8}>
           <Typography variant="body2" className={classes.right}>
-            <a
+            <Link
               href="https://www.acm.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Association for Computing Machinery
-            </a>
+            </Link>
           </Typography>
         </Grid>
       </Grid>

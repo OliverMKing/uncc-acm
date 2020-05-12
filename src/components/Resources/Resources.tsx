@@ -1,7 +1,7 @@
 import React from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Typography, Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,13 +23,13 @@ const Resources: React.FC = (): JSX.Element => {
       <Typography variant="body1" align="left" gutterBottom paragraph>
         This page contains a list of resources that we have found to be useful
         for competitive programming and technical interviews. Please{" "}
-        <a
+        <Link
           href="mailto:acm-uncc@uncc.edu"
           target="_blank"
           rel="noopener noreferrer"
         >
           email us
-        </a>{" "}
+        </Link>{" "}
         if you have any suggestions for things to add to this page.
       </Typography>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
@@ -38,40 +38,40 @@ const Resources: React.FC = (): JSX.Element => {
       <Typography variant="body1" align="left" gutterBottom paragraph>
         <ul className={classes.list}>
           <li>
-            <a
+            <Link
               href="https://cses.fi/book/index.php"
               target="_blank"
               rel="noopener noreferrer"
             >
               Competitive Programmer's Handbook
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://algs4.cs.princeton.edu/home/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Algorithms, 4th Edition
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://elementsofprogramminginterviews.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Elements of Programming Interviews
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="http://www.crackingthecodinginterview.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Cracking the Coding Interview
-            </a>
+            </Link>
           </li>
         </ul>
       </Typography>
@@ -81,40 +81,40 @@ const Resources: React.FC = (): JSX.Element => {
       <Typography variant="body1" align="left" gutterBottom paragraph>
         <ul className={classes.list}>
           <li>
-            <a
+            <Link
               href="https://leetcode.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               LeetCode
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://open.kattis.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Kattis
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://www.hackerrank.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               HackerRank
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://www.geeksforgeeks.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
               GeeksforGeeks
-            </a>
+            </Link>
           </li>
         </ul>
       </Typography>
@@ -124,31 +124,31 @@ const Resources: React.FC = (): JSX.Element => {
       <Typography variant="body1" align="left" gutterBottom paragraph>
         <ul className={classes.list}>
           <li>
-            <a
+            <Link
               href="https://www.coursera.org/learn/algorithms-part1"
               target="_blank"
               rel="noopener noreferrer"
             >
               Algorithms, Part I
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://www.coursera.org/learn/algorithms-part2"
               target="_blank"
               rel="noopener noreferrer"
             >
               Algorithms, Part II
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://www.youtube.com/channel/UCmJz2DV1a3yfgrR7GqRtUUA"
               target="_blank"
               rel="noopener noreferrer"
             >
               Back To Back SWE
-            </a>
+            </Link>
           </li>
         </ul>
       </Typography>

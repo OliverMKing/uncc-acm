@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Link } from "@material-ui/core";
 import { Email, LinkedIn } from "@material-ui/icons";
 
 import logo from "../../images/acm-color.png";
@@ -54,32 +54,36 @@ const Home: React.FC = (): JSX.Element => {
         programmers and complete beginners. Normal meetings are held twice a
         week and cover a wide range of topics. Major events are held about every
         other month. Every fall, we send teams of three to the{" "}
-        <a
+        <Link
           href="https://icpc.baylor.edu/"
           target="_blank"
           rel="noopener noreferrer"
         >
           International Collegiate Programming Contest (ICPC)
-        </a>
-        . Check the <NavLink to="/schedule">schedule</NavLink> to learn more.
+        </Link>
+        . Check the{" "}
+        <NavLink to="/schedule" style={{ textDecoration: "none" }}>
+          <Link>schedule</Link>
+        </NavLink>{" "}
+        to learn more.
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
         New or prospective members should join us on{" "}
-        <a
+        <Link
           href="https://discord.com/invite/JqrPUEn"
           target="_blank"
           rel="noopener noreferrer"
         >
           Discord
-        </a>{" "}
+        </Link>{" "}
         and{" "}
-        <a
+        <Link
           href="https://ninerengage.uncc.edu/organization/acm"
           target="_blank"
           rel="noopener noreferrer"
         >
           Niner Engage
-        </a>{" "}
+        </Link>{" "}
         to receive periodic updates.
       </Typography>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
@@ -90,77 +94,77 @@ const Home: React.FC = (): JSX.Element => {
           <Typography>President — Oliver King</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <a
+          <Link
             href="https://www.linkedin.com/in/oliver-merkley-king/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <LinkedIn color="primary" />
-          </a>{" "}
-          <a
+          </Link>{" "}
+          <Link
             href="mailto:oking3@uncc.edu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Email color="primary" />
-          </a>
+          </Link>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Vice President — Ed Nava</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <a
+          <Link
             href="https://www.linkedin.com/in/ed-nava/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <LinkedIn color="primary" />
-          </a>{" "}
-          <a
+          </Link>{" "}
+          <Link
             href="mailto:enava@uncc.edu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Email color="primary" />
-          </a>
+          </Link>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Secretary — Jacob Raymond</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <a
+          <Link
             href="https://www.linkedin.com/in/jacob-raymond-3a3a45126/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <LinkedIn color="primary" />
-          </a>{" "}
-          <a
+          </Link>{" "}
+          <Link
             href="mailto:jraymon9@uncc.edu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Email color="primary" />
-          </a>
+          </Link>
         </Grid>
         <Grid item xs={9} md={4}>
           <Typography>Treasurer — Mat Rizvanolli</Typography>
         </Grid>
         <Grid item xs={3} md={8}>
-          <a
+          <Link
             href="https://www.linkedin.com/in/mat-rizvanolli-790920152/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <LinkedIn color="primary" />
-          </a>{" "}
-          <a
+          </Link>{" "}
+          <Link
             href="mailto:mrizvano@uncc.edu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Email color="primary" />
-          </a>
+          </Link>
         </Grid>
       </Grid>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
@@ -168,13 +172,13 @@ const Home: React.FC = (): JSX.Element => {
       </Typography>
       <Typography variant="body1" align="left" gutterBottom paragraph>
         You can email us at{" "}
-        <a
+        <Link
           href="mailto:acm-uncc@uncc.edu"
           target="_blank"
           rel="noopener noreferrer"
         >
           acm-uncc@uncc.edu
-        </a>
+        </Link>
         . Any suggestions or topic requests are appreciated. We are open to
         hosting employer events and forming corporate partnerships.
       </Typography>
