@@ -11,7 +11,6 @@ import {
   ButtonBase,
   Container,
   Drawer,
-  Divider,
   Toolbar,
   Typography,
   IconButton,
@@ -20,7 +19,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { Menu, ChevronLeft } from "@material-ui/icons";
+import { Menu } from "@material-ui/icons";
 
 import logo from "../../images/acm-white.png";
 
@@ -74,6 +73,9 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       overflowX: "hidden",
       width: theme.spacing(7) + 1,
+    },
+    drawerList: {
+      paddingTop: theme.spacing(8) + 1,
     },
   })
 );
@@ -152,13 +154,7 @@ const NavBar: React.FC<RouteComponentProps> = ({
         open={isOpen}
         onClose={toggleDrawer(false)}
       >
-        <div className={classes.toolbar}>
-          <IconButton>
-            <ChevronLeft />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
+        <List className={classes.drawerList}>
           {Routes.map((prop: IRoute, key) => {
             return (
               <NavLink
