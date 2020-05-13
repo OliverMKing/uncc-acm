@@ -7,27 +7,21 @@ import Routes, { IRoute } from "../../Routes";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
-  Button,
   ButtonBase,
   Container,
   Drawer,
   Toolbar,
   Typography,
   IconButton,
-  Popper,
-  MenuList,
-  MenuItem,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Grow,
-  Paper,
-  ClickAwayListener,
 } from "@material-ui/core";
-import { Menu, ArrowDropDown } from "@material-ui/icons";
+import { Menu } from "@material-ui/icons";
 
 import logo from "../../../images/acm-white.png";
+import UserActions from "./UserActions/UserActions";
 
 const drawerWidth: number = 170;
 
@@ -111,87 +105,6 @@ const NavBar = (props: any) => {
     return props.location.pathname === routeName;
   };
 
-  // Logout dropdown
-  const anchorRef = React.useRef<HTMLButtonElement>(null);
-  const [logoutOpen, setLogoutOpen] = useState(false);
-
-  const handleLogoutToggle = () => {
-    setLogoutOpen((prevLogoutOpen) => !prevLogoutOpen);
-  };
-
-  const handleLogoutClose = (event: React.MouseEvent<EventTarget>) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
-
-    setLogoutOpen(false);
-  };
-
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setLogoutOpen(false);
-    }
-  }
-
-  const logoutMenu = (
-    <Popper
-      open={logoutOpen}
-      anchorEl={anchorRef.current}
-      role={undefined}
-      transition
-      disablePortal
-      placement="bottom-end"
-    >
-      {({ TransitionProps, placement }) => (
-        <Grow
-          {...TransitionProps}
-          style={{
-            transformOrigin:
-              placement === "bottom" ? "right top" : "right bottom",
-          }}
-        >
-          <Paper>
-            <ClickAwayListener onClickAway={handleLogoutClose}>
-              <MenuList
-                autoFocusItem={logoutOpen}
-                id="menu-list-grow"
-                onKeyDown={handleListKeyDown}
-              >
-                <MenuItem onClick={handleLogoutClose}>Profile</MenuItem>
-                <MenuItem onClick={props.logout}>Logout</MenuItem>
-              </MenuList>
-            </ClickAwayListener>
-          </Paper>
-        </Grow>
-      )}
-    </Popper>
-  );
-
-  // Determine if user is logged in
-  const userButton =
-    props.user && props.user.attributes ? (
-      <div>
-        <Button
-          color="inherit"
-          ref={anchorRef}
-          aria-controls={logoutOpen ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          onClick={handleLogoutToggle}
-        >
-          {props.user.attributes.email} <ArrowDropDown />
-        </Button>
-        {logoutMenu}
-      </div>
-    ) : (
-      <Button color="inherit" onClick={props.auth}>
-        Login
-      </Button>
-    );
-
   return (
     <div>
       <div className={classes.root}>
@@ -217,7 +130,11 @@ const NavBar = (props: any) => {
                   <Typography variant="h6">UNCC ACM</Typography>
                 </ButtonBase>
               </NavLink>
-              {userButton}
+              <UserActions
+                auth={props.auth}
+                user={props.user}
+                logout={props.logout}
+              />
             </Toolbar>
           </Container>
         </AppBar>

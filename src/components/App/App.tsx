@@ -17,7 +17,7 @@ Amplify.configure(awsExports);
 function App(): JSX.Element {
   const [user, setUser] = useState(null);
 
-  // Essentially component did mount
+  // Checks if the user signs in or signs out and sets user state accordingly
   useEffect(() => {
     Hub.listen("auth", ({ payload: { event, data } }) => {
       switch (event) {
@@ -37,13 +37,13 @@ function App(): JSX.Element {
       .catch(() => console.log("Not signed in"));
   });
 
-  // Login
+  // Lets people log in with Google
   const googleLogin = () =>
     Auth.federatedSignIn({
       provider: CognitoHostedUIIdentityProvider.Google,
     });
 
-  // Logout
+  // Logsout user
   const logOut = () => Auth.signOut();
 
   return (
