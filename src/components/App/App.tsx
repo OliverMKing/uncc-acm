@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
-import NavBar from "../NavBar/NavBar";
-import Body from "../Body/Body";
-import theme from "../../Theme";
-import Routes, { IRoute } from "../../Routes";
+import NavBar from "./NavBar/NavBar";
+import Body from "./Body/Body";
+import theme from "../Theme";
+import Routes, { IRoute } from "../Routes";
 import { ThemeProvider } from "@material-ui/core";
 
 import Amplify, { Auth, Hub } from "aws-amplify";

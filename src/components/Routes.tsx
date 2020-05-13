@@ -2,8 +2,8 @@ import React from "react";
 
 import { Home, Event, ViewList, Folder } from "@material-ui/icons";
 
-import HomeComponent from "./components/Home/Home";
-import Resources from "./components/Resources/Resources";
+import HomeComponent from "./App/Body/Home/Home";
+import Resources from "./App/Body/Resources/Resources";
 
 const Schedule: React.FC = (): JSX.Element => {
   return <h1>Schedule</h1>;

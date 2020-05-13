@@ -5,7 +5,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Grid, Typography, Link } from "@material-ui/core";
 import { Email, LinkedIn } from "@material-ui/icons";
 
-import logo from "../../images/acm-color.png";
+import logo from "../../../../images/acm-color.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

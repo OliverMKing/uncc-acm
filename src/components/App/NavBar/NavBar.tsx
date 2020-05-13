@@ -27,7 +27,7 @@ import {
 } from "@material-ui/core";
 import { Menu, ArrowDropDown } from "@material-ui/icons";
 
-import logo from "../../images/acm-white.png";
+import logo from "../../../images/acm-white.png";
 
 const drawerWidth: number = 170;
 
