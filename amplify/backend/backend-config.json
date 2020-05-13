@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"unccacm57a9e204": {
+		"unccacmd47be9f1": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],

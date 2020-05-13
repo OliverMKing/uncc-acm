@@ -13,7 +13,9 @@
         },
         "categories": {
             "auth": {
-                "unccacm57a9e204": {}
+                "unccacmd47be9f1": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"637088542652-flfn87nu5mft56i01kovssr99rtptaj0.apps.googleusercontent.com\",\"client_secret\":\"zo1oJoxghFIlIQ66cxXK06XD\"}]"
+                }
             }
         }
     }

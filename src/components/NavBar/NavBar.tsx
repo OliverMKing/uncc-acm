@@ -81,11 +81,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 // NavBar component
-const NavBar: React.FC<RouteComponentProps> = ({
-  history,
-  location,
-  match,
-}: RouteComponentProps) => {
+const NavBar = (props: any) => {
   const classes = useStyles();
 
   // State hook that toggles drawer
@@ -106,8 +102,18 @@ const NavBar: React.FC<RouteComponentProps> = ({
 
   // Check if a route is currently active
   const activeRoute = (routeName: String): boolean => {
-    return location.pathname === routeName;
+    return props.location.pathname === routeName;
   };
+
+  const userButton = props.user ? (
+    <Button color="inherit" onClick={props.logout}>
+      Logout
+    </Button>
+  ) : (
+    <Button color="inherit" onClick={props.auth}>
+      Login
+    </Button>
+  );
 
   return (
     <div>
@@ -134,7 +140,7 @@ const NavBar: React.FC<RouteComponentProps> = ({
                   <Typography variant="h6">UNCC ACM</Typography>
                 </ButtonBase>
               </NavLink>
-              <Button color="inherit">Login</Button>
+              {userButton}
             </Toolbar>
           </Container>
         </AppBar>
