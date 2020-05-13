@@ -33,10 +33,9 @@ function App(): JSX.Element {
     Auth.currentAuthenticatedUser()
       .then((user) => {
         setUser(user);
-        console.log(user);
       })
       .catch(() => console.log("Not signed in"));
-  }, []);
+  });
 
   // Login
   const googleLogin = () =>
