@@ -10,9 +10,10 @@ import {
   Theme,
   Grid,
   Popover,
+  Slider,
   makeStyles,
 } from "@material-ui/core";
-
+import { Autocomplete } from "@material-ui/lab";
 import { Search, FilterList } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     filterPopup: {
       padding: theme.spacing(2),
+      width: "500px",
     },
   })
 );
@@ -52,6 +54,20 @@ const Problems = () => {
   };
 
   const filterOpen = Boolean(anchorEl);
+
+  // Filter by website, difficulty, category
+  const websites = [
+    { name: "Leetcode" },
+    { name: "Kattis" },
+    { name: "Hackerrank" },
+  ];
+
+  const types = [
+    { name: "Dynamic Programming" },
+    { name: "String" },
+    { name: "Array" },
+    { name: "Recursion" },
+  ];
 
   return (
     <div>
@@ -99,12 +115,61 @@ const Problems = () => {
           }}
         >
           <div className={classes.filterPopup}>
-            <Grid alignItems="center" container spacing={5}>
-              <Grid item xs={4}>
+            <Grid container alignItems="center">
+              <Grid item xs={6}>
                 <Typography variant="h6">Filters</Typography>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={6}>
                 <Button color="primary">Reset</Button>
+              </Grid>
+              <Grid item xs={3}>
+                <Typography
+                  variant="body1"
+                  style={{ paddingBottom: "20px", paddingTop: "30px" }}
+                >
+                  Website
+                </Typography>
+              </Grid>
+              <Grid item xs={9}>
+                <Autocomplete
+                  id="Website"
+                  options={websites}
+                  getOptionLabel={(option) => option.name}
+                  style={{ width: 250 }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <Typography variant="body1" style={{ paddingBottom: "20px" }}>
+                  Difficulty
+                </Typography>
+              </Grid>
+              <Grid item xs={9}>
+                <Slider
+                  value={[1, 10]}
+                  onChange={() => {}}
+                  step={1}
+                  marks
+                  min={1}
+                  max={10}
+                  valueLabelDisplay="auto"
+                  aria-labelledby="range-slider"
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <Typography variant="body1">Type</Typography>
+              </Grid>
+              <Grid item xs={9}>
+                <Autocomplete
+                  multiple
+                  filterSelectedOptions
+                  id="Type"
+                  options={types}
+                  getOptionLabel={(option) => option.name}
+                  renderInput={(params) => (
+                    <TextField {...params} variant="standard" />
+                  )}
+                />
               </Grid>
             </Grid>
           </div>
