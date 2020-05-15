@@ -25,7 +25,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     filterPopup: {
       padding: theme.spacing(2),
-      width: "500px",
+      width: "350px",
+    },
+    reset: {
+      alignContent: "",
     },
   })
 );
@@ -54,6 +57,13 @@ const Problems = () => {
   };
 
   const filterOpen = Boolean(anchorEl);
+
+  // State for difficulty slider
+  const [difficulty, setDifficulty] = useState<number[]>([1, 10]);
+
+  const handleDifficultyChange = (event: any, newValue: number | number[]) => {
+    setDifficulty(newValue as number[]);
+  };
 
   // Filter by website, difficulty, category
   const websites = [
@@ -116,50 +126,51 @@ const Problems = () => {
         >
           <div className={classes.filterPopup}>
             <Grid container alignItems="center">
-              <Grid item xs={6}>
+              <Grid item xs={10}>
                 <Typography variant="h6">Filters</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={2}>
                 <Button color="primary">Reset</Button>
               </Grid>
-              <Grid item xs={3}>
-                <Typography
-                  variant="body1"
-                  style={{ paddingBottom: "20px", paddingTop: "30px" }}
-                >
+              <Grid item xs={12}>
+                <Typography variant="body1" style={{ paddingTop: "30px" }}>
                   Website
                 </Typography>
               </Grid>
-              <Grid item xs={9}>
+              <Grid item xs={12} style={{ paddingBottom: "20px" }}>
                 <Autocomplete
+                  multiple
+                  filterSelectedOptions
                   id="Website"
                   options={websites}
                   getOptionLabel={(option) => option.name}
-                  style={{ width: 250 }}
-                  renderInput={(params) => <TextField {...params} />}
+                  renderInput={(params) => (
+                    <TextField {...params} variant="standard" />
+                  )}
                 />
               </Grid>
-              <Grid item xs={3}>
-                <Typography variant="body1" style={{ paddingBottom: "20px" }}>
-                  Difficulty
-                </Typography>
+              <Grid item xs={12}>
+                <Typography variant="body1">Difficulty</Typography>
               </Grid>
-              <Grid item xs={9}>
+              <Grid item xs={12} style={{ paddingBottom: "10px" }}>
                 <Slider
-                  value={[1, 10]}
-                  onChange={() => {}}
+                  value={difficulty}
+                  onChange={handleDifficultyChange}
                   step={1}
-                  marks
                   min={1}
                   max={10}
+                  marks={[
+                    { value: 1, label: "1" },
+                    { value: 10, label: "10" },
+                  ]}
                   valueLabelDisplay="auto"
                   aria-labelledby="range-slider"
                 />
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={12}>
                 <Typography variant="body1">Type</Typography>
               </Grid>
-              <Grid item xs={9}>
+              <Grid item xs={12}>
                 <Autocomplete
                   multiple
                   filterSelectedOptions
