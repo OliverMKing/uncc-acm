@@ -72,15 +72,24 @@ const Problems = () => {
     setWebsites(newValues as String[]);
   };
 
+  // State for problem types
+  const [types, setTypes] = useState<String[]>([]);
+
+  const handleTypesChange = (event: any, newValues: String | String[]) => {
+    setTypes(newValues as String[]);
+  };
+
   // Filter by website, difficulty, category
   const websitesList = ["Leetcode", "Kattis", "Hackerrank"];
 
-  const types = [
-    { name: "Dynamic Programming" },
-    { name: "String" },
-    { name: "Array" },
-    { name: "Recursion" },
-  ];
+  const typesList = ["Dynamic Programming", "String", "Array", "Recursion"];
+
+  // Reset filters
+  const resetFilters = () => {
+    setDifficulty([1, 10]);
+    setWebsites([]);
+    setTypes([]);
+  };
 
   return (
     <div>
@@ -133,7 +142,9 @@ const Problems = () => {
                 <Typography variant="h6">Filters</Typography>
               </Grid>
               <Grid item xs={2}>
-                <Button color="primary">Reset</Button>
+                <Button color="primary" onClick={resetFilters}>
+                  Reset
+                </Button>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body1" style={{ paddingTop: "30px" }}>
@@ -179,8 +190,9 @@ const Problems = () => {
                   multiple
                   filterSelectedOptions
                   id="Type"
-                  options={types}
-                  getOptionLabel={(option) => option.name}
+                  value={types}
+                  onChange={handleTypesChange}
+                  options={typesList}
                   renderInput={(params) => (
                     <TextField {...params} variant="standard" />
                   )}
