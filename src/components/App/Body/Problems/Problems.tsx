@@ -65,12 +65,15 @@ const Problems = () => {
     setDifficulty(newValue as number[]);
   };
 
+  // State for website
+  const [websites, setWebsites] = useState<String[]>([]);
+
+  const handleWebsitesChange = (event: any, newValues: String | String[]) => {
+    setWebsites(newValues as String[]);
+  };
+
   // Filter by website, difficulty, category
-  const websites = [
-    { name: "Leetcode" },
-    { name: "Kattis" },
-    { name: "Hackerrank" },
-  ];
+  const websitesList = ["Leetcode", "Kattis", "Hackerrank"];
 
   const types = [
     { name: "Dynamic Programming" },
@@ -142,8 +145,9 @@ const Problems = () => {
                   multiple
                   filterSelectedOptions
                   id="Website"
-                  options={websites}
-                  getOptionLabel={(option) => option.name}
+                  options={websitesList}
+                  value={websites}
+                  onChange={handleWebsitesChange}
                   renderInput={(params) => (
                     <TextField {...params} variant="standard" />
                   )}
