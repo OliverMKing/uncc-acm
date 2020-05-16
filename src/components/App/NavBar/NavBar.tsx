@@ -122,6 +122,7 @@ const NavBar = (props: any) => {
               </IconButton>
               <NavLink
                 className={classes.title}
+                onClick={toggleDrawer(false)}
                 style={{ textDecoration: "none", color: "white" }}
                 to="/"
               >

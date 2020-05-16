@@ -103,8 +103,8 @@ export type ModelIntInput = {
 };
 
 export enum Language {
-  C = "C",
-  Java = "Java",
+  C = "C", // C#
+  Java = "Java", // C++
   Python = "Python",
   JavaScript = "JavaScript",
   Go = "Go",

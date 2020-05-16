@@ -4,6 +4,7 @@ import "./App.css";
 
 import NavBar from "./NavBar/NavBar";
 import Body from "./Body/Body";
+import NewProblem from "./Body/Problems/NewProblem/NewProblem";
 import theme from "../Theme";
 import Routes, { IRoute } from "../Routes";
 import { ThemeProvider } from "@material-ui/core";
@@ -51,6 +52,12 @@ function App(): JSX.Element {
       <ThemeProvider theme={theme}>
         <NavBar auth={googleLogin} user={user} logout={logOut}></NavBar>
         <Switch>
+          <Route exact path={"/problems/new"} key={"/problems/new"}>
+            <Body>
+              <NewProblem />
+            </Body>
+          </Route>
+
           {Routes.map((route: IRoute) => (
             <Route exact path={route.path} key={route.path}>
               <Body>

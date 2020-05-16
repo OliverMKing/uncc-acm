@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import {
   Typography,
   TextField,
@@ -14,7 +16,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import { Search, FilterList } from "@material-ui/icons";
+import { Search, FilterList, LibraryAdd } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -80,7 +82,7 @@ const Problems = () => {
   };
 
   // Filter by website, difficulty, category
-  const websitesList = ["Leetcode", "Kattis", "Hackerrank"];
+  const websitesList = ["Leetcode", "Kattis", "HackerRank"];
 
   const typesList = ["Dynamic Programming", "String", "Array", "Recursion"];
 
@@ -202,6 +204,14 @@ const Problems = () => {
           </div>
         </Popover>
       </div>
+      <Link
+        to={"/problems/new"}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <Button variant="contained" color="primary" startIcon={<LibraryAdd />}>
+          Add Problem
+        </Button>
+      </Link>
     </div>
   );
 };
