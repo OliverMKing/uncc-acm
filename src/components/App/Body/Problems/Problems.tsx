@@ -44,20 +44,20 @@ const Problems = () => {
   // State for problems from API
   const [problems, setProblems] = useState([]);
 
+  // Gets problems
   async function fetchProblems() {
     try {
       const problemData: any = await API.graphql(
         graphqlOperation(listProblems)
       );
       const problems = problemData.data.listProblems.items;
-      // setProblems(problems);
+      setProblems(problems);
       console.log(problems);
     } catch (error) {
       console.log(error);
     }
   }
 
-  // Gets problems
   useEffect(() => {
     fetchProblems();
   }, []);
