@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -17,6 +17,9 @@ import {
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { Search, FilterList, LibraryAdd } from "@material-ui/icons";
+
+import { API, graphqlOperation } from "aws-amplify";
+import { listProblems } from "../../../../graphql/queries";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +40,27 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Problems = () => {
   const classes = useStyles();
+
+  // State for problems from API
+  const [problems, setProblems] = useState([]);
+
+  async function fetchProblems() {
+    try {
+      const problemData: any = await API.graphql(
+        graphqlOperation(listProblems)
+      );
+      const problems = problemData.data.listProblems.items;
+      // setProblems(problems);
+      console.log(problems);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Gets problems
+  useEffect(() => {
+    fetchProblems();
+  }, []);
 
   // State for search input
   const [search, setSearch] = useState("");
