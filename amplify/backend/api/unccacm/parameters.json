@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "unccacm",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authunccacmd47be9f1",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

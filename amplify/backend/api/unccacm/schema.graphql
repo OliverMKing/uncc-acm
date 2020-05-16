@@ -1,0 +1,52 @@
+type Problem @model {
+  id: ID!
+  name: String!
+  link: String!
+  tags: [Tag!]!
+  website: Website!
+  difficulty: Int!
+  solutions: [Solution] @connection(keyName: "byProblem", fields: ["id"])
+}
+
+enum Tag {
+  String
+  Tree
+  DynamicProgramming
+  Array
+  Recursion
+}
+
+enum Website {
+  Leetcode
+  Kattis
+  HackerRank
+}
+
+type Solution
+  @model
+  @key(name: "byProblem", fields: ["problemID"])
+  @auth(rules: [{ allow: owner, operations: [update, delete] }]) {
+  id: ID!
+  language: Language!
+  code: String!
+  owner: String!
+  problemID: ID!
+  problem: Problem @connection(fields: ["problemID"])
+}
+
+enum Language {
+  "C#"
+  C
+  "C++"
+  Java
+  Python
+  JavaScript
+  Go
+  Kotlin
+  Ruby
+  Haskell
+  Rust
+  Swift
+  Scala
+  PHP
+}
