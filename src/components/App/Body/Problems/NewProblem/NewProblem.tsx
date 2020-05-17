@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 
-import { Typography, Button, TextField } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
+
+import { API, graphqlOperation } from "aws-amplify";
+import { createProblem } from "../../../../../graphql/mutations";
 
 const NewProblem = () => {
   const [name, setName] = useState<String>("");
   const [link, setLink] = useState<String>("");
   const [website, setWebsite] = useState<String>("");
   const [types, setTypes] = useState<String[]>([]);
-  const [difficulty, setDifficulty] = useState<Number>();
+  const [difficulty, setDifficulty] = useState<String>("");
 
   const handleNameChange = (event: any): void => {
     setName(event.target.value);
@@ -19,20 +30,40 @@ const NewProblem = () => {
   };
 
   const handleWebsiteChange = (event: any): void => {
-    setWebsite(event.target.value);
+    setWebsite(event.target.value as String);
   };
 
-  const handleTypesChange = (event: any): void => {
-    setTypes(event.target.value as String[]);
+  const handleTypesChange = (
+    event: any,
+    newValues: String | String[]
+  ): void => {
+    setTypes(newValues as String[]);
   };
 
   const handleDifficultyChange = (event: any): void => {
-    setDifficulty(Number(event.target.value) as Number);
+    setDifficulty(event.target.value);
   };
 
-  const websitesList = ["Leetcode", "Kattis", "HackerRank"];
   const typesList = ["Dynamic Programming", "String", "Array", "Recursion"];
-  const difficultiesList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+  // Upload to server
+  async function uploadProblem(event: any) {
+    event.preventDefault();
+    try {
+      const request = {
+        name: name,
+        link: link,
+        tags: types,
+        website: website,
+        difficulty: Number(difficulty),
+      };
+      console.log(request);
+      await API.graphql(graphqlOperation(createProblem, { input: request }));
+      console.log("Created problem");
+    } catch (err) {
+      console.log("error creating Problem:", err);
+    }
+  }
 
   return (
     <div>
@@ -41,7 +72,7 @@ const NewProblem = () => {
       </Typography>
       <form>
         <TextField
-          label="Problem Name"
+          label="Problem name"
           required
           value={name}
           onChange={handleNameChange}
@@ -50,7 +81,7 @@ const NewProblem = () => {
           margin="normal"
         />
         <TextField
-          label="Problem Link"
+          label="Problem link"
           required
           value={link}
           onChange={handleLinkChange}
@@ -58,54 +89,53 @@ const NewProblem = () => {
           fullWidth
           margin="normal"
         />
-        <Autocomplete
-          options={websitesList}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              fullWidth
-              required
-              value={website}
-              onChange={handleWebsiteChange}
-              margin="normal"
-              label="Website"
-              variant="outlined"
-            />
-          )}
-        />
+        <FormControl variant="outlined" required fullWidth margin="normal">
+          <InputLabel>Website</InputLabel>
+          <Select
+            value={website}
+            onChange={handleWebsiteChange}
+            label="Website"
+          >
+            <MenuItem value={"Leetcode"}>Leetcode</MenuItem>
+            <MenuItem value={"Kattis"}>Kattis</MenuItem>
+            <MenuItem value={"HackerRank"}>HackerRank</MenuItem>
+          </Select>
+        </FormControl>
         <Autocomplete
           multiple
           filterSelectedOptions
+          onChange={handleTypesChange}
           options={typesList}
           renderInput={(params) => (
             <TextField
               {...params}
-              required
               fullWidth
               value={types}
-              onChange={handleTypesChange}
               margin="normal"
               label="Problem types"
               variant="outlined"
             />
           )}
         />
-        <Autocomplete
-          filterSelectedOptions
-          options={difficultiesList}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              required
-              value={difficulty}
-              onChange={handleDifficultyChange}
-              fullWidth
-              margin="normal"
-              label="Problem difficulty"
-              variant="outlined"
-            />
-          )}
-        />
+        <FormControl variant="outlined" required fullWidth margin="normal">
+          <InputLabel>Problem difficulty</InputLabel>
+          <Select
+            value={difficulty}
+            onChange={handleDifficultyChange}
+            label="Problem difficulty"
+          >
+            <MenuItem value={1}>1 (Easiest)</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
+            <MenuItem value={7}>7</MenuItem>
+            <MenuItem value={8}>8</MenuItem>
+            <MenuItem value={9}>9</MenuItem>
+            <MenuItem value={10}>10 (Hardest)</MenuItem>
+          </Select>
+        </FormControl>
         <Button
           style={{ marginTop: "15px" }}
           size="large"
@@ -113,6 +143,7 @@ const NewProblem = () => {
           variant="contained"
           type="submit"
           color="primary"
+          onClick={uploadProblem}
         >
           Create Problem
         </Button>
