@@ -92,6 +92,7 @@ const NewProblem = () => {
         <FormControl variant="outlined" required fullWidth margin="normal">
           <InputLabel>Website</InputLabel>
           <Select
+            style={{ textAlign: "left" }}
             value={website}
             onChange={handleWebsiteChange}
             label="Website"
@@ -110,6 +111,7 @@ const NewProblem = () => {
             <TextField
               {...params}
               fullWidth
+              required
               value={types}
               margin="normal"
               label="Problem types"
@@ -121,6 +123,7 @@ const NewProblem = () => {
           <InputLabel>Problem difficulty</InputLabel>
           <Select
             value={difficulty}
+            style={{ textAlign: "left" }}
             onChange={handleDifficultyChange}
             label="Problem difficulty"
           >
