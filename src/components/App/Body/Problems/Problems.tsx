@@ -18,6 +18,8 @@ import {
 import { Autocomplete } from "@material-ui/lab";
 import { Search, FilterList, LibraryAdd } from "@material-ui/icons";
 
+import ProblemTable from "./ProblemTable/ProblemTable";
+
 import { API, graphqlOperation } from "aws-amplify";
 import { listProblems } from "../../../../graphql/queries";
 
@@ -228,6 +230,8 @@ const Problems = () => {
           </div>
         </Popover>
       </div>
+      <ProblemTable problems={problems} />
+
       <Link
         to={"/problems/new"}
         style={{ textDecoration: "none", color: "inherit" }}
