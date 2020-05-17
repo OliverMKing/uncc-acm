@@ -51,8 +51,21 @@ const ProblemTable = (props: any) => {
           )
         : problems;
 
+    problems =
+      props.search.length > 0
+        ? problems.filter((problem: any) =>
+            problem.name.toLowerCase().includes(props.search.toLowerCase())
+          )
+        : problems;
+
     setCurrentProblems(problems);
-  }, [props.problems, props.difficulty, props.types, props.websites]);
+  }, [
+    props.problems,
+    props.difficulty,
+    props.types,
+    props.websites,
+    props.search,
+  ]);
 
   return (
     <div>

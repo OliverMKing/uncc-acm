@@ -235,6 +235,7 @@ const Problems = () => {
         difficulty={difficulty}
         types={types}
         websites={websites}
+        search={search}
       />
 
       <Link
