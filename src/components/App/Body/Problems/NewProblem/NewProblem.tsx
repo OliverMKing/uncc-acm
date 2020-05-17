@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import {
   Typography,
@@ -16,12 +17,16 @@ import { API, graphqlOperation } from "aws-amplify";
 import { createProblem } from "../../../../../graphql/mutations";
 
 const NewProblem = () => {
+  const history = useHistory();
+
+  // Form state
   const [name, setName] = useState<String>("");
   const [link, setLink] = useState<String>("");
   const [website, setWebsite] = useState<String>("");
   const [types, setTypes] = useState<String[]>([]);
   const [difficulty, setDifficulty] = useState<String>("");
 
+  // Checks if form has been submitted for errors
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleNameChange = (event: any): void => {
@@ -73,9 +78,8 @@ const NewProblem = () => {
         website: website,
         difficulty: Number(difficulty),
       };
-      console.log(request);
       await API.graphql(graphqlOperation(createProblem, { input: request }));
-      console.log("Created problem");
+      history.push("/problems");
     } catch (err) {
       console.log("error creating Problem:", err);
     }
