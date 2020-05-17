@@ -8,6 +8,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  FormHelperText,
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 
@@ -20,6 +21,8 @@ const NewProblem = () => {
   const [website, setWebsite] = useState<String>("");
   const [types, setTypes] = useState<String[]>([]);
   const [difficulty, setDifficulty] = useState<String>("");
+
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleNameChange = (event: any): void => {
     setName(event.target.value);
@@ -49,6 +52,19 @@ const NewProblem = () => {
   // Upload to server
   async function uploadProblem(event: any) {
     event.preventDefault();
+
+    // Make sure there are no null values
+    if (
+      name === "" ||
+      link === "" ||
+      website === "" ||
+      types.length === 0 ||
+      difficulty === ""
+    ) {
+      setSubmitted(true);
+      return;
+    }
+
     try {
       const request = {
         name: name,
@@ -73,23 +89,33 @@ const NewProblem = () => {
       <form>
         <TextField
           label="Problem name"
+          error={submitted && name === ""}
           required
           value={name}
           onChange={handleNameChange}
           variant="outlined"
           fullWidth
           margin="normal"
+          helperText={submitted && name === "" ? "Required" : ""}
         />
         <TextField
           label="Problem link"
           required
+          error={submitted && link === ""}
           value={link}
           onChange={handleLinkChange}
           variant="outlined"
           fullWidth
           margin="normal"
+          helperText={submitted && link === "" ? "Required" : ""}
         />
-        <FormControl variant="outlined" required fullWidth margin="normal">
+        <FormControl
+          variant="outlined"
+          required
+          fullWidth
+          margin="normal"
+          error={submitted && website === ""}
+        >
           <InputLabel>Website</InputLabel>
           <Select
             style={{ textAlign: "left" }}
@@ -101,6 +127,9 @@ const NewProblem = () => {
             <MenuItem value={"Kattis"}>Kattis</MenuItem>
             <MenuItem value={"HackerRank"}>HackerRank</MenuItem>
           </Select>
+          <FormHelperText>
+            {submitted && difficulty === "" ? "Required" : ""}
+          </FormHelperText>
         </FormControl>
         <Autocomplete
           multiple
@@ -112,14 +141,22 @@ const NewProblem = () => {
               {...params}
               fullWidth
               required
+              error={submitted && types.length === 0}
               value={types}
               margin="normal"
               label="Problem types"
               variant="outlined"
+              helperText={submitted && types.length === 0 ? "Required" : ""}
             />
           )}
         />
-        <FormControl variant="outlined" required fullWidth margin="normal">
+        <FormControl
+          variant="outlined"
+          required
+          fullWidth
+          margin="normal"
+          error={submitted && difficulty === ""}
+        >
           <InputLabel>Problem difficulty</InputLabel>
           <Select
             value={difficulty}
@@ -138,6 +175,9 @@ const NewProblem = () => {
             <MenuItem value={9}>9</MenuItem>
             <MenuItem value={10}>10 (Hardest)</MenuItem>
           </Select>
+          <FormHelperText>
+            {submitted && difficulty === "" ? "Required" : ""}
+          </FormHelperText>
         </FormControl>
         <Button
           style={{ marginTop: "15px" }}
