@@ -230,7 +230,12 @@ const Problems = () => {
           </div>
         </Popover>
       </div>
-      <ProblemTable problems={problems} />
+      <ProblemTable
+        problems={problems}
+        difficulty={difficulty}
+        types={types}
+        websites={websites}
+      />
 
       <Link
         to={"/problems/new"}

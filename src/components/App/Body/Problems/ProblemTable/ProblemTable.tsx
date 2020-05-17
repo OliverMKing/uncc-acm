@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Typography,
@@ -14,8 +14,8 @@ import {
 
 const ProblemTable = (props: any) => {
   // Pagination state
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -27,6 +27,32 @@ const ProblemTable = (props: any) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  // Filter problems
+  const [currentProblems, setCurrentProblems] = useState([[]]);
+
+  useEffect(() => {
+    let problems = props.problems;
+    const min = Math.min(props.difficulty[0], props.difficulty[1]);
+    const max = Math.max(props.difficulty[0], props.difficulty[1]);
+
+    problems = problems.filter(
+      (problem: any) => problem.difficulty >= min && problem.difficulty <= max
+    );
+
+    problems = problems.filter((problem: any) =>
+      props.types.every((t: any) => problem.tags.includes(t))
+    );
+
+    problems =
+      props.websites.length > 0
+        ? problems.filter((problem: any) =>
+            props.websites.includes(problem.website)
+          )
+        : problems;
+
+    setCurrentProblems(problems);
+  }, [props.problems, props.difficulty, props.types, props.websites]);
 
   return (
     <div>
@@ -41,12 +67,14 @@ const ProblemTable = (props: any) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.problems
+            {currentProblems
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((problem: any) => (
                 <TableRow key={problem.id}>
                   <TableCell component="th" scope="row">
-                    <Typography variant="body2">{problem.name}</Typography>
+                    <Link href={`/problems/${problem.id}`}>
+                      <Typography variant="body2">{problem.name}</Typography>
+                    </Link>
                   </TableCell>
                   <TableCell align="right">
                     <Link
@@ -60,8 +88,8 @@ const ProblemTable = (props: any) => {
                     </Link>
                   </TableCell>
                   <TableCell align="right">
-                    <Typography noWrap variant="body2">
-                      {problem.tags.join(", ")}
+                    <Typography variant="body2">
+                      {problem.tags ? problem.tags.join(", ") : ""}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
@@ -77,7 +105,7 @@ const ProblemTable = (props: any) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={props.problems.length}
+        count={currentProblems.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
