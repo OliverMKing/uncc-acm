@@ -33,6 +33,8 @@ const ProblemTable = (props: any) => {
   const [currentProblems, setCurrentProblems] = useState([[]]);
 
   useEffect(() => {
+    setPage(0);
+
     let problems = props.problems;
     const min = Math.min(props.difficulty[0], props.difficulty[1]);
     const max = Math.max(props.difficulty[0], props.difficulty[1]);
