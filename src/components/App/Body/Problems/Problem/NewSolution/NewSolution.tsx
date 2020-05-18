@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Typography,
@@ -11,6 +11,19 @@ import {
 } from "@material-ui/core";
 
 const NewSolution = (props: any) => {
+  // Form state
+  const [language, setLanguage] = useState<String>("");
+  const [code, setCode] = useState<String>("");
+
+  const handleLanguageChange = (event: any): void => {
+    setLanguage(event.target.value);
+  };
+
+  const handleCodeChange = (event: any): void => {
+    setCode(event.target.value);
+    console.log(code);
+  };
+
   return (
     <div>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
@@ -21,9 +34,15 @@ const NewSolution = (props: any) => {
         solution that worked from the testing website.
       </Typography>
       <form>
-        <FormControl variant="outlined" fullWidth>
+        <FormControl variant="outlined" fullWidth required>
           <InputLabel>Programming Language</InputLabel>
-          <Select style={{ textAlign: "left" }} label="Programming Language">
+          <Select
+            style={{ textAlign: "left" }}
+            label="Programming Language"
+            value={language}
+            onChange={handleLanguageChange}
+            required
+          >
             <MenuItem value={"C#"}>C#</MenuItem>
             <MenuItem value={"C"}>C</MenuItem>
             <MenuItem value={"C++"}>C++</MenuItem>
@@ -40,12 +59,14 @@ const NewSolution = (props: any) => {
           </Select>
         </FormControl>
         <TextField
+          value={code}
+          onChange={handleCodeChange}
           label="Code"
           required
           variant="outlined"
           fullWidth
           margin="normal"
-          rows={10}
+          rows={Math.max(5, code.split(/\r\n|\r|\n/).length)}
           multiline
         />
         <Button
