@@ -5,6 +5,7 @@ import "./App.css";
 import NavBar from "./NavBar/NavBar";
 import Body from "./Body/Body";
 import NewProblem from "./Body/Problems/NewProblem/NewProblem";
+import Problem from "./Body/Problems/Problem/Problem";
 import theme from "../Theme";
 import Routes, { IRoute } from "../Routes";
 import { ThemeProvider } from "@material-ui/core";
@@ -51,21 +52,24 @@ function App(): JSX.Element {
     <div className="App">
       <ThemeProvider theme={theme}>
         <NavBar auth={googleLogin} user={user} logout={logOut}></NavBar>
-        <Switch>
-          <Route exact path={"/problems/new"} key={"/problems/new"}>
-            <Body>
+        <Body>
+          <Switch>
+            <Route exact path={"/problems/new"} key={"/problems/new"}>
               <NewProblem />
-            </Body>
-          </Route>
-
-          {Routes.map((route: IRoute) => (
-            <Route exact path={route.path} key={route.path}>
-              <Body>
+            </Route>{" "}
+            <Route
+              exact
+              path={"/problems/:id"}
+              key={"/problems/:id"}
+              component={Problem}
+            />
+            {Routes.map((route: IRoute) => (
+              <Route exact path={route.path} key={route.path}>
                 <route.component />
-              </Body>
-            </Route>
-          ))}
-        </Switch>
+              </Route>
+            ))}
+          </Switch>{" "}
+        </Body>
       </ThemeProvider>
     </div>
   );

@@ -129,6 +129,10 @@ const Problems = () => {
         with. You can search for different kinds of problems below. Signed in
         users can upload their solutions.
       </Typography>
+      <Typography variant="body1" align="left" gutterBottom paragraph>
+        Click the problem name below to see the page for that problem.{" "}
+      </Typography>
+
       <div className={classes.searchAndFilters}>
         <TextField
           placeholder="Search"
