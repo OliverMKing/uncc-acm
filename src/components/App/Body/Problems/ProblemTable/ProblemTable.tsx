@@ -8,6 +8,7 @@ import {
   TableHead,
   TableBody,
   TableRow,
+  CircularProgress,
   TableCell,
   TablePagination,
 } from "@material-ui/core";
@@ -66,6 +67,13 @@ const ProblemTable = (props: any) => {
     props.websites,
     props.search,
   ]);
+
+  if (props.problems.length === 0)
+    return (
+      <div style={{ margin: "40px 0px 50px 0px" }}>
+        <CircularProgress />
+      </div>
+    );
 
   return (
     <div>

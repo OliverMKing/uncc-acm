@@ -54,7 +54,6 @@ const Problems = () => {
       );
       const problems = problemData.data.listProblems.items;
       setProblems(problems);
-      console.log(problems);
     } catch (error) {
       console.log(error);
     }
