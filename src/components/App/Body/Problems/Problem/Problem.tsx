@@ -21,6 +21,7 @@ const Problem = (props: any) => {
   const [problem, setProblem] = useState<any>(null);
   const [showNewSolution, setNewSolution] = useState<boolean>(false);
   const [solution, setSolution] = useState<String>("");
+  const [code, setCode] = useState<String>("");
 
   async function fetchProblem() {
     try {
@@ -52,6 +53,12 @@ const Problem = (props: any) => {
 
   const handleSolutionChange = (event: any): void => {
     setSolution(event.target.value);
+
+    const match = problem.solutions.items.find((item: any) => {
+      return item.id === event.target.value;
+    }).code;
+
+    setCode(match);
   };
 
   return (
@@ -111,6 +118,7 @@ const Problem = (props: any) => {
           })}
         </Select>
       </FormControl>
+      {code === "" ? null : <div>{code}</div>}
       <div style={{ marginTop: "15px" }}>
         {showNewSolution ? (
           <NewSolution id={props.match.params.id} user={props.user} />
