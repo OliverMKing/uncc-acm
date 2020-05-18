@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 
-import { CircularProgress, Typography, Link, Chip } from "@material-ui/core";
-
+import {
+  CircularProgress,
+  Typography,
+  Chip,
+  Select,
+  MenuItem,
+  Button,
+  Link,
+  FormControl,
+  InputLabel,
+} from "@material-ui/core";
+import { LibraryAdd } from "@material-ui/icons";
 import { API, graphqlOperation } from "aws-amplify";
 import { getProblem } from "../../../../../graphql/queries";
 
+import NewSolution from "./NewSolution/NewSolution";
+
 const Problem = (props: any) => {
   const [problem, setProblem] = useState<any>(null);
+  const [showNewSolution, setNewSolution] = useState<boolean>(false);
 
   async function fetchProblem() {
     try {
@@ -31,6 +44,10 @@ const Problem = (props: any) => {
         <CircularProgress />
       </div>
     );
+
+  const addSolutionClick = () => {
+    setNewSolution(true);
+  };
 
   return (
     <div>
@@ -63,13 +80,36 @@ const Problem = (props: any) => {
       <Typography variant="subtitle1" align="left" gutterBottom>
         Difficulty {problem.difficulty}
       </Typography>
-
-      <Typography variant="body1" align="left" gutterBottom paragraph>
-        We work on different problems every week. This page is a collection of
-        problems we have previously worked on and solutions we have come up
-        with. You can search for different kinds of problems below. Signed in
-        users can upload their solutions.
+      <Typography variant="h4" component="h4" align="left" gutterBottom>
+        Solutions
       </Typography>
+      <Typography variant="body1" align="left" paragraph>
+        Don't just view other people's solutions as soon as you get stuck. These
+        problems are hard and you should spend a lot of time on them yourself
+        first. Looking at the solution as soon as you struggle is not an
+        effective strategy for learning how to solve problems.
+      </Typography>
+      <FormControl variant="outlined" fullWidth>
+        <InputLabel>View Solution</InputLabel>
+        <Select style={{ textAlign: "left" }} label="View Solution">
+          <MenuItem value={"Oliver's solution"}>Oliver's solution</MenuItem>
+          <MenuItem value={"Other solution"}>Other solution</MenuItem>
+        </Select>
+      </FormControl>
+      <div style={{ marginTop: "15px" }}>
+        {showNewSolution ? (
+          <NewSolution id={props.match.params.id} />
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<LibraryAdd />}
+            onClick={addSolutionClick}
+          >
+            Add Solution
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

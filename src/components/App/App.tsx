@@ -56,13 +56,14 @@ function App(): JSX.Element {
           <Switch>
             <Route exact path={"/problems/new"} key={"/problems/new"}>
               <NewProblem />
-            </Route>{" "}
+            </Route>
             <Route
               exact
               path={"/problems/:id"}
               key={"/problems/:id"}
               component={Problem}
             />
+
             {Routes.map((route: IRoute) => (
               <Route exact path={route.path} key={route.path}>
                 <route.component />
