@@ -20,6 +20,7 @@ import NewSolution from "./NewSolution/NewSolution";
 const Problem = (props: any) => {
   const [problem, setProblem] = useState<any>(null);
   const [showNewSolution, setNewSolution] = useState<boolean>(false);
+  const [solution, setSolution] = useState<String>("");
 
   async function fetchProblem() {
     try {
@@ -47,6 +48,10 @@ const Problem = (props: any) => {
 
   const addSolutionClick = () => {
     setNewSolution(true);
+  };
+
+  const handleSolutionChange = (event: any): void => {
+    setSolution(event.target.value);
   };
 
   return (
@@ -91,9 +96,19 @@ const Problem = (props: any) => {
       </Typography>
       <FormControl variant="outlined" fullWidth>
         <InputLabel>View Solution</InputLabel>
-        <Select style={{ textAlign: "left" }} label="View Solution">
-          <MenuItem value={"Oliver's solution"}>Oliver's solution</MenuItem>
-          <MenuItem value={"Other solution"}>Other solution</MenuItem>
+        <Select
+          style={{ textAlign: "left" }}
+          label="View Solution"
+          value={solution}
+          onChange={handleSolutionChange}
+        >
+          {problem.solutions.items.map((solution: any) => {
+            return (
+              <MenuItem
+                value={solution.id}
+              >{`${solution.language} solution by ${solution.owner}`}</MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
       <div style={{ marginTop: "15px" }}>
