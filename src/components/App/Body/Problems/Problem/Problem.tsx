@@ -98,7 +98,7 @@ const Problem = (props: any) => {
       </FormControl>
       <div style={{ marginTop: "15px" }}>
         {showNewSolution ? (
-          <NewSolution id={props.match.params.id} />
+          <NewSolution id={props.match.params.id} user={props.user} />
         ) : (
           <Button
             variant="contained"

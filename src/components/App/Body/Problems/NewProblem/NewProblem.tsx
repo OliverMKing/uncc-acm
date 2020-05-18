@@ -81,7 +81,7 @@ const NewProblem = () => {
       await API.graphql(graphqlOperation(createProblem, { input: request }));
       history.push("/problems");
     } catch (err) {
-      console.log("error creating Problem:", err);
+      console.log("Error creating Problem: ", err);
     }
   }
 

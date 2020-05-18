@@ -61,7 +61,7 @@ function App(): JSX.Element {
               exact
               path={"/problems/:id"}
               key={"/problems/:id"}
-              component={Problem}
+              render={(props) => <Problem {...props} user={user} />}
             />
 
             {Routes.map((route: IRoute) => (

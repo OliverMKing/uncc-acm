@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import {
   Typography,
@@ -8,12 +9,20 @@ import {
   Select,
   MenuItem,
   TextField,
+  FormHelperText,
 } from "@material-ui/core";
 
+import { API, graphqlOperation } from "aws-amplify";
+import { createSolution } from "../../../../../../graphql/mutations";
+
 const NewSolution = (props: any) => {
+  const history = useHistory();
+
   // Form state
   const [language, setLanguage] = useState<String>("");
   const [code, setCode] = useState<String>("");
+
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleLanguageChange = (event: any): void => {
     setLanguage(event.target.value);
@@ -21,8 +30,31 @@ const NewSolution = (props: any) => {
 
   const handleCodeChange = (event: any): void => {
     setCode(event.target.value);
-    console.log(code);
   };
+
+  // Upload to server
+  async function uploadSolution(event: any) {
+    event.preventDefault();
+
+    // Make sure there are no null values
+    if (language === "" || code === "") {
+      setSubmitted(true);
+      return;
+    }
+
+    try {
+      const request = {
+        language: language,
+        code: code,
+        problemID: props.id,
+        owner: props.user.attributes.email,
+      };
+      await API.graphql(graphqlOperation(createSolution, { input: request }));
+      history.go(0);
+    } catch (err) {
+      console.log("Error creating Solution: ", err);
+    }
+  }
 
   return (
     <div>
@@ -34,7 +66,12 @@ const NewSolution = (props: any) => {
         solution that worked from the testing website.
       </Typography>
       <form>
-        <FormControl variant="outlined" fullWidth required>
+        <FormControl
+          variant="outlined"
+          fullWidth
+          required
+          error={submitted && language === ""}
+        >
           <InputLabel>Programming Language</InputLabel>
           <Select
             style={{ textAlign: "left" }}
@@ -57,12 +94,17 @@ const NewSolution = (props: any) => {
             <MenuItem value={"Scala"}>Scala</MenuItem>
             <MenuItem value={"PHP"}>PHP</MenuItem>
           </Select>
+          <FormHelperText>
+            {submitted && language === "" ? "Required" : ""}
+          </FormHelperText>
         </FormControl>
         <TextField
           value={code}
           onChange={handleCodeChange}
           label="Code"
           required
+          error={submitted && code === ""}
+          helperText={submitted && code === "" ? "Required" : ""}
           variant="outlined"
           fullWidth
           margin="normal"
@@ -71,6 +113,7 @@ const NewSolution = (props: any) => {
         />
         <Button
           style={{ marginTop: "15px" }}
+          onClick={uploadSolution}
           size="large"
           fullWidth
           variant="contained"
