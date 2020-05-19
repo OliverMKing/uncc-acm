@@ -119,11 +119,19 @@ const Problem = (props: any) => {
         first. Looking at the solution as soon as you struggle is not an
         effective strategy for learning how to solve problems.
       </Typography>
-      <FormControl variant="outlined" fullWidth>
-        <InputLabel>View Solution</InputLabel>
+      <FormControl
+        variant={problem.solutions.items.length === 0 ? "standard" : "outlined"}
+        fullWidth
+      >
+        <InputLabel>
+          {problem.solutions.items.length === 0
+            ? "No Solutions Yet"
+            : "View Solution"}
+        </InputLabel>
         <Select
           style={{ textAlign: "left" }}
           label="View Solution"
+          disabled={problem.solutions.items.length === 0}
           value={solution}
           onChange={handleSolutionChange}
         >
@@ -143,7 +151,7 @@ const Problem = (props: any) => {
               whiteSpace: "pre-wrap",
               textAlign: "left",
               margin: "0px 20px 0px 20px",
-              padding: "20px 0px 20px 0px",
+              padding: "5px 0px 5px 0px",
             }}
           >
             <SyntaxHighlighter
