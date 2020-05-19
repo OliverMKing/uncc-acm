@@ -9,6 +9,7 @@ import {
   Button,
   Link,
   FormControl,
+  Paper,
   InputLabel,
 } from "@material-ui/core";
 import { LibraryAdd } from "@material-ui/icons";
@@ -29,7 +30,6 @@ const Problem = (props: any) => {
         graphqlOperation(getProblem, { id: props.match.params.id })
       );
       setProblem(problemData.data.getProblem);
-      console.log(problemData);
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +118,20 @@ const Problem = (props: any) => {
           })}
         </Select>
       </FormControl>
-      {code === "" ? null : <div>{code}</div>}
+      {code === "" ? null : (
+        <Paper style={{ marginTop: "15px" }}>
+          <div
+            style={{
+              whiteSpace: "pre-wrap",
+              textAlign: "left",
+              margin: "0px 20px 0px 20px",
+              padding: "20px 0px 20px 0px",
+            }}
+          >
+            {code}
+          </div>
+        </Paper>
+      )}
       <div style={{ marginTop: "15px" }}>
         {showNewSolution ? (
           <NewSolution id={props.match.params.id} user={props.user} />
