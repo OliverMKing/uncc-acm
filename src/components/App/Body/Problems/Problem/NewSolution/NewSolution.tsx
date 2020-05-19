@@ -88,6 +88,7 @@ const NewSolution = (props: any) => {
             <MenuItem value={"Go"}>Go</MenuItem>
             <MenuItem value={"Kotlin"}>Kotlin</MenuItem>
             <MenuItem value={"Ruby"}>Ruby</MenuItem>
+            <MenuItem value={"Python"}>Python</MenuItem>
             <MenuItem value={"Haskell"}>Haskell</MenuItem>
             <MenuItem value={"Rust"}>Rust</MenuItem>
             <MenuItem value={"Swift"}>Swift</MenuItem>

@@ -17,6 +17,24 @@ import { API, graphqlOperation } from "aws-amplify";
 import { getProblem } from "../../../../../graphql/queries";
 
 import NewSolution from "./NewSolution/NewSolution";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { xcode } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+var highlighterLangDict = new Map<string, string>();
+highlighterLangDict.set("C#", "csp");
+highlighterLangDict.set("C", "cs");
+highlighterLangDict.set("C++", "cpp");
+highlighterLangDict.set("Java", "java");
+highlighterLangDict.set("Python", "python");
+highlighterLangDict.set("JavaScript", "javascript");
+highlighterLangDict.set("Go", "go");
+highlighterLangDict.set("Kotlin", "kotlin");
+highlighterLangDict.set("Ruby", "ruby");
+highlighterLangDict.set("Haskell", "haskell");
+highlighterLangDict.set("Rust", "rust");
+highlighterLangDict.set("Swift", "swift");
+highlighterLangDict.set("Scala", "scala");
+highlighterLangDict.set("PHP", "php");
 
 const Problem = (props: any) => {
   const [problem, setProblem] = useState<any>(null);
@@ -128,7 +146,17 @@ const Problem = (props: any) => {
               padding: "20px 0px 20px 0px",
             }}
           >
-            {code}
+            <SyntaxHighlighter
+              showLineNumbers
+              language={highlighterLangDict.get(
+                problem.solutions.items.find((item: any) => {
+                  return item.id === solution;
+                }).language
+              )}
+              style={xcode}
+            >
+              {code}
+            </SyntaxHighlighter>
           </div>
         </Paper>
       )}
@@ -142,7 +170,7 @@ const Problem = (props: any) => {
             startIcon={<LibraryAdd />}
             onClick={addSolutionClick}
           >
-            Add Solution
+            Add Your Solution
           </Button>
         )}
       </div>
