@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import validUrl from "valid-url";
+
 import {
   Typography,
   Button,
@@ -20,11 +22,11 @@ const NewProblem = () => {
   const history = useHistory();
 
   // Form state
-  const [name, setName] = useState<String>("");
-  const [link, setLink] = useState<String>("");
-  const [website, setWebsite] = useState<String>("");
-  const [types, setTypes] = useState<String[]>([]);
-  const [difficulty, setDifficulty] = useState<String>("");
+  const [name, setName] = useState<string>("");
+  const [link, setLink] = useState<string>("");
+  const [website, setWebsite] = useState<string>("");
+  const [types, setTypes] = useState<string[]>([]);
+  const [difficulty, setDifficulty] = useState<string>("");
 
   // Checks if form has been submitted for errors
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -38,14 +40,14 @@ const NewProblem = () => {
   };
 
   const handleWebsiteChange = (event: any): void => {
-    setWebsite(event.target.value as String);
+    setWebsite(event.target.value as string);
   };
 
   const handleTypesChange = (
     event: any,
     newValues: String | String[]
   ): void => {
-    setTypes(newValues as String[]);
+    setTypes(newValues as string[]);
   };
 
   const handleDifficultyChange = (event: any): void => {
@@ -64,7 +66,8 @@ const NewProblem = () => {
       link === "" ||
       website === "" ||
       types.length === 0 ||
-      difficulty === ""
+      difficulty === "" ||
+      !validUrl.isWebUri(link)
     ) {
       setSubmitted(true);
       return;
@@ -105,13 +108,19 @@ const NewProblem = () => {
         <TextField
           label="Problem link"
           required
-          error={submitted && link === ""}
+          error={submitted && (link === "" || !validUrl.isWebUri(link))}
           value={link}
           onChange={handleLinkChange}
           variant="outlined"
           fullWidth
           margin="normal"
-          helperText={submitted && link === "" ? "Required" : ""}
+          helperText={
+            submitted && link === ""
+              ? "Required"
+              : submitted && !validUrl.isWebUri(link)
+              ? "Must be URI (include http or https)"
+              : ""
+          }
         />
         <FormControl
           variant="outlined"

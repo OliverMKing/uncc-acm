@@ -178,7 +178,7 @@ const Problem = (props: any) => {
             startIcon={<LibraryAdd />}
             onClick={addSolutionClick}
           >
-            Add Your Solution
+            {"Add Your Solution"}
           </Button>
         )}
       </div>
