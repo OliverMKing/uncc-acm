@@ -2,6 +2,58 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getAProblem = /* GraphQL */ `
+  query GetAProblem($id: ID!) {
+    getAProblem(id: $id) {
+      id
+      name
+      link
+      tags
+      website
+      difficulty
+      solutions {
+        items {
+          id
+          language
+          code
+          owner
+          problemID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const getProblems = /* GraphQL */ `
+  query GetProblems {
+    getProblems {
+      id
+      name
+      link
+      tags
+      website
+      difficulty
+      solutions {
+        items {
+          id
+          language
+          code
+          owner
+          problemID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const getProblem = /* GraphQL */ `
   query GetProblem($id: ID!) {
     getProblem(id: $id) {

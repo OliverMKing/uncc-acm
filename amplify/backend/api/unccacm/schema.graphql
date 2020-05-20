@@ -1,3 +1,8 @@
+type Query {
+  getAProblem(id: ID!): Problem @aws_api_key
+  getProblems: [Problem] @aws_api_key
+}
+
 type Problem @model {
   id: ID!
   name: String!

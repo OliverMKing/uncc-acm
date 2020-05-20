@@ -402,6 +402,66 @@ export type DeleteSolutionMutation = {
   } | null,
 };
 
+export type GetAProblemQueryVariables = {
+  id: string,
+};
+
+export type GetAProblemQuery = {
+  getAProblem:  {
+    __typename: "Problem",
+    id: string,
+    name: string,
+    link: string,
+    tags: Array< Tag >,
+    website: Website,
+    difficulty: number,
+    solutions:  {
+      __typename: "ModelSolutionConnection",
+      items:  Array< {
+        __typename: "Solution",
+        id: string,
+        language: Language,
+        code: string,
+        owner: string,
+        problemID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type GetProblemsQuery = {
+  getProblems:  Array< {
+    __typename: "Problem",
+    id: string,
+    name: string,
+    link: string,
+    tags: Array< Tag >,
+    website: Website,
+    difficulty: number,
+    solutions:  {
+      __typename: "ModelSolutionConnection",
+      items:  Array< {
+        __typename: "Solution",
+        id: string,
+        language: Language,
+        code: string,
+        owner: string,
+        problemID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null > | null,
+};
+
 export type GetProblemQueryVariables = {
   id: string,
 };
