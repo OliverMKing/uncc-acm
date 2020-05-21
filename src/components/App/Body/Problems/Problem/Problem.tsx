@@ -13,7 +13,7 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import { LibraryAdd } from "@material-ui/icons";
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import { getProblem } from "../../../../../graphql/queries";
 
 import NewSolution from "./NewSolution/NewSolution";
@@ -44,9 +44,12 @@ const Problem = (props: any) => {
 
   async function fetchProblem() {
     try {
-      const problemData: any = await API.graphql(
-        graphqlOperation(getProblem, { id: props.match.params.id })
-      );
+      const problemData: any = await API.graphql({
+        query: getProblem,
+        variables: { id: props.match.params.id },
+        // @ts-ignore
+        authMode: "API_KEY",
+      });
       setProblem(problemData.data.getProblem);
     } catch (error) {
       console.log(error);

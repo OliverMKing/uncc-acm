@@ -20,7 +20,7 @@ import { Search, FilterList, LibraryAdd } from "@material-ui/icons";
 
 import ProblemTable from "./ProblemTable/ProblemTable";
 
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import { listProblems } from "../../../../graphql/queries";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -49,9 +49,11 @@ const Problems = () => {
   // Gets problems
   async function fetchProblems() {
     try {
-      const problemData: any = await API.graphql(
-        graphqlOperation(listProblems)
-      );
+      const problemData: any = await API.graphql({
+        query: listProblems,
+        // @ts-ignore
+        authMode: "API_KEY",
+      });
       const problems = problemData.data.listProblems.items;
       setProblems(problems);
     } catch (error) {

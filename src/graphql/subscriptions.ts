@@ -11,6 +11,8 @@ export const onCreateProblem = /* GraphQL */ `
       tags
       website
       difficulty
+      createdAt
+      updatedAt
       solutions {
         items {
           id
@@ -23,8 +25,6 @@ export const onCreateProblem = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -37,6 +37,8 @@ export const onUpdateProblem = /* GraphQL */ `
       tags
       website
       difficulty
+      createdAt
+      updatedAt
       solutions {
         items {
           id
@@ -49,8 +51,6 @@ export const onUpdateProblem = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -63,6 +63,8 @@ export const onDeleteProblem = /* GraphQL */ `
       tags
       website
       difficulty
+      createdAt
+      updatedAt
       solutions {
         items {
           id
@@ -75,8 +77,6 @@ export const onDeleteProblem = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -88,6 +88,8 @@ export const onCreateSolution = /* GraphQL */ `
       code
       owner
       problemID
+      createdAt
+      updatedAt
       problem {
         id
         name
@@ -95,14 +97,12 @@ export const onCreateSolution = /* GraphQL */ `
         tags
         website
         difficulty
+        createdAt
+        updatedAt
         solutions {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -114,6 +114,8 @@ export const onUpdateSolution = /* GraphQL */ `
       code
       owner
       problemID
+      createdAt
+      updatedAt
       problem {
         id
         name
@@ -121,14 +123,12 @@ export const onUpdateSolution = /* GraphQL */ `
         tags
         website
         difficulty
+        createdAt
+        updatedAt
         solutions {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -140,6 +140,8 @@ export const onDeleteSolution = /* GraphQL */ `
       code
       owner
       problemID
+      createdAt
+      updatedAt
       problem {
         id
         name
@@ -147,14 +149,12 @@ export const onDeleteSolution = /* GraphQL */ `
         tags
         website
         difficulty
+        createdAt
+        updatedAt
         solutions {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;

@@ -2,84 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getAProblem = /* GraphQL */ `
-  query GetAProblem($id: ID!) {
-    getAProblem(id: $id) {
-      id
-      name
-      link
-      tags
-      website
-      difficulty
-      solutions {
-        items {
-          id
-          language
-          code
-          owner
-          problemID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const getProblems = /* GraphQL */ `
-  query GetProblems {
-    getProblems {
-      id
-      name
-      link
-      tags
-      website
-      difficulty
-      solutions {
-        items {
-          id
-          language
-          code
-          owner
-          problemID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const getProblem = /* GraphQL */ `
-  query GetProblem($id: ID!) {
-    getProblem(id: $id) {
-      id
-      name
-      link
-      tags
-      website
-      difficulty
-      solutions {
-        items {
-          id
-          language
-          code
-          owner
-          problemID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const listProblems = /* GraphQL */ `
   query ListProblems(
     $filter: ModelProblemFilterInput
@@ -94,13 +16,39 @@ export const listProblems = /* GraphQL */ `
         tags
         website
         difficulty
+        createdAt
+        updatedAt
         solutions {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
+    }
+  }
+`;
+export const getProblem = /* GraphQL */ `
+  query GetProblem($id: ID!) {
+    getProblem(id: $id) {
+      id
+      name
+      link
+      tags
+      website
+      difficulty
+      createdAt
+      updatedAt
+      solutions {
+        items {
+          id
+          language
+          code
+          owner
+          problemID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
     }
   }
 `;
@@ -112,6 +60,8 @@ export const getSolution = /* GraphQL */ `
       code
       owner
       problemID
+      createdAt
+      updatedAt
       problem {
         id
         name
@@ -119,14 +69,12 @@ export const getSolution = /* GraphQL */ `
         tags
         website
         difficulty
+        createdAt
+        updatedAt
         solutions {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -143,6 +91,8 @@ export const listSolutions = /* GraphQL */ `
         code
         owner
         problemID
+        createdAt
+        updatedAt
         problem {
           id
           name
@@ -153,8 +103,6 @@ export const listSolutions = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }

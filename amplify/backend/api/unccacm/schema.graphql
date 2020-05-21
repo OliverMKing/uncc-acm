@@ -1,9 +1,4 @@
-type Query {
-  getAProblem(id: ID!): Problem @aws_api_key
-  getProblems: [Problem] @aws_api_key
-}
-
-type Problem @model {
+type Problem @model @auth(rules: [{ allow: public, operations: [read] }]) {
   id: ID!
   name: String!
   link: String!
@@ -30,7 +25,12 @@ enum Website {
 type Solution
   @model
   @key(name: "byProblem", fields: ["problemID"])
-  @auth(rules: [{ allow: owner, operations: [update, delete] }]) {
+  @auth(
+    rules: [
+      { allow: owner, operations: [update, delete] }
+      { allow: public, operations: [read] }
+    ]
+  ) {
   id: ID!
   language: Language!
   code: String!

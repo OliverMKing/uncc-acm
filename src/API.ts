@@ -218,6 +218,8 @@ export type CreateProblemMutation = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -232,8 +234,6 @@ export type CreateProblemMutation = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -251,6 +251,8 @@ export type UpdateProblemMutation = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -265,8 +267,6 @@ export type UpdateProblemMutation = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -284,6 +284,8 @@ export type DeleteProblemMutation = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -298,8 +300,6 @@ export type DeleteProblemMutation = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -316,6 +316,8 @@ export type CreateSolutionMutation = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -324,15 +326,13 @@ export type CreateSolutionMutation = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -349,6 +349,8 @@ export type UpdateSolutionMutation = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -357,15 +359,13 @@ export type UpdateSolutionMutation = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -382,6 +382,8 @@ export type DeleteSolutionMutation = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -390,107 +392,13 @@ export type DeleteSolutionMutation = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type GetAProblemQueryVariables = {
-  id: string,
-};
-
-export type GetAProblemQuery = {
-  getAProblem:  {
-    __typename: "Problem",
-    id: string,
-    name: string,
-    link: string,
-    tags: Array< Tag >,
-    website: Website,
-    difficulty: number,
-    solutions:  {
-      __typename: "ModelSolutionConnection",
-      items:  Array< {
-        __typename: "Solution",
-        id: string,
-        language: Language,
-        code: string,
-        owner: string,
-        problemID: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type GetProblemsQuery = {
-  getProblems:  Array< {
-    __typename: "Problem",
-    id: string,
-    name: string,
-    link: string,
-    tags: Array< Tag >,
-    website: Website,
-    difficulty: number,
-    solutions:  {
-      __typename: "ModelSolutionConnection",
-      items:  Array< {
-        __typename: "Solution",
-        id: string,
-        language: Language,
-        code: string,
-        owner: string,
-        problemID: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null > | null,
-};
-
-export type GetProblemQueryVariables = {
-  id: string,
-};
-
-export type GetProblemQuery = {
-  getProblem:  {
-    __typename: "Problem",
-    id: string,
-    name: string,
-    link: string,
-    tags: Array< Tag >,
-    website: Website,
-    difficulty: number,
-    solutions:  {
-      __typename: "ModelSolutionConnection",
-      items:  Array< {
-        __typename: "Solution",
-        id: string,
-        language: Language,
-        code: string,
-        owner: string,
-        problemID: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -511,14 +419,46 @@ export type ListProblemsQuery = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null > | null,
     nextToken: string | null,
+  } | null,
+};
+
+export type GetProblemQueryVariables = {
+  id: string,
+};
+
+export type GetProblemQuery = {
+  getProblem:  {
+    __typename: "Problem",
+    id: string,
+    name: string,
+    link: string,
+    tags: Array< Tag >,
+    website: Website,
+    difficulty: number,
+    createdAt: string,
+    updatedAt: string,
+    solutions:  {
+      __typename: "ModelSolutionConnection",
+      items:  Array< {
+        __typename: "Solution",
+        id: string,
+        language: Language,
+        code: string,
+        owner: string,
+        problemID: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
   } | null,
 };
 
@@ -534,6 +474,8 @@ export type GetSolutionQuery = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -542,15 +484,13 @@ export type GetSolutionQuery = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -570,6 +510,8 @@ export type ListSolutionsQuery = {
       code: string,
       owner: string,
       problemID: string,
+      createdAt: string,
+      updatedAt: string,
       problem:  {
         __typename: "Problem",
         id: string,
@@ -581,8 +523,6 @@ export type ListSolutionsQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null > | null,
     nextToken: string | null,
   } | null,
@@ -597,6 +537,8 @@ export type OnCreateProblemSubscription = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -611,8 +553,6 @@ export type OnCreateProblemSubscription = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -625,6 +565,8 @@ export type OnUpdateProblemSubscription = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -639,8 +581,6 @@ export type OnUpdateProblemSubscription = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -653,6 +593,8 @@ export type OnDeleteProblemSubscription = {
     tags: Array< Tag >,
     website: Website,
     difficulty: number,
+    createdAt: string,
+    updatedAt: string,
     solutions:  {
       __typename: "ModelSolutionConnection",
       items:  Array< {
@@ -667,8 +609,6 @@ export type OnDeleteProblemSubscription = {
       } | null > | null,
       nextToken: string | null,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -680,6 +620,8 @@ export type OnCreateSolutionSubscription = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -688,15 +630,13 @@ export type OnCreateSolutionSubscription = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -712,6 +652,8 @@ export type OnUpdateSolutionSubscription = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -720,15 +662,13 @@ export type OnUpdateSolutionSubscription = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -744,6 +684,8 @@ export type OnDeleteSolutionSubscription = {
     code: string,
     owner: string,
     problemID: string,
+    createdAt: string,
+    updatedAt: string,
     problem:  {
       __typename: "Problem",
       id: string,
@@ -752,14 +694,12 @@ export type OnDeleteSolutionSubscription = {
       tags: Array< Tag >,
       website: Website,
       difficulty: number,
+      createdAt: string,
+      updatedAt: string,
       solutions:  {
         __typename: "ModelSolutionConnection",
         nextToken: string | null,
       } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
