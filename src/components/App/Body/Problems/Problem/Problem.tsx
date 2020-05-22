@@ -174,7 +174,7 @@ const Problem = (props: any) => {
       <div style={{ marginTop: "15px" }}>
         {showNewSolution ? (
           <NewSolution id={props.match.params.id} user={props.user} />
-        ) : (
+        ) : props.user ? (
           <Button
             variant="contained"
             color="primary"
@@ -183,7 +183,7 @@ const Problem = (props: any) => {
           >
             {"Add Your Solution"}
           </Button>
-        )}
+        ) : null}
       </div>
     </div>
   );
