@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Home: React.FC = (): JSX.Element => {
+const Home = (props: any): JSX.Element => {
   const classes = useStyles();
 
   return (

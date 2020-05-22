@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Problems = () => {
+const Problems = (props: any) => {
   const classes = useStyles();
 
   // State for problems from API
@@ -242,15 +242,23 @@ const Problems = () => {
         websites={websites}
         search={search}
       />
-
-      <Link
-        to={"/problems/new"}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <Button variant="contained" color="primary" startIcon={<LibraryAdd />}>
-          Add Problem
-        </Button>
-      </Link>
+      {props.user &&
+      props.user.signInUserSession.idToken.payload["cognito:groups"].includes(
+        "unccacm_admin"
+      ) ? (
+        <Link
+          to={"/problems/new"}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<LibraryAdd />}
+          >
+            Add Problem
+          </Button>
+        </Link>
+      ) : null}
     </div>
   );
 };

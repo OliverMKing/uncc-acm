@@ -7,7 +7,7 @@ import Body from "./Body/Body";
 import NewProblem from "./Body/Problems/NewProblem/NewProblem";
 import Problem from "./Body/Problems/Problem/Problem";
 import theme from "../Theme";
-import Routes, { IRoute } from "../Routes";
+import Routes from "../Routes";
 import { ThemeProvider } from "@material-ui/core";
 
 import Amplify, { Auth, Hub } from "aws-amplify";
@@ -64,9 +64,9 @@ function App(): JSX.Element {
               render={(props) => <Problem {...props} user={user} />}
             />
 
-            {Routes.map((route: IRoute) => (
+            {Routes.map((route: any) => (
               <Route exact path={route.path} key={route.path}>
-                <route.component />
+                <route.component user={user} />
               </Route>
             ))}
           </Switch>{" "}

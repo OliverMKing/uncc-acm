@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Resources: React.FC = (): JSX.Element => {
+const Resources = (props: any): JSX.Element => {
   const classes = useStyles();
 
   return (
