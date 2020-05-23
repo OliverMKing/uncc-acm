@@ -19,8 +19,8 @@ const NewSolution = (props: any) => {
   const history = useHistory();
 
   // Form state
-  const [language, setLanguage] = useState<String>("");
-  const [code, setCode] = useState<String>("");
+  const [language, setLanguage] = useState<String>(props.language);
+  const [code, setCode] = useState<String>(props.code);
 
   const [submitted, setSubmitted] = useState<boolean>(false);
 
@@ -121,7 +121,7 @@ const NewSolution = (props: any) => {
           type="submit"
           color="primary"
         >
-          Add Solution
+          {props.add ? "Add Solution" : "Edit Solution"}
         </Button>
       </form>
     </div>

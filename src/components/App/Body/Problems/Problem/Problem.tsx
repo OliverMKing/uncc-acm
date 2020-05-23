@@ -182,7 +182,27 @@ const Problem = (props: any) => {
       )}
       <div style={{ marginTop: "15px" }}>
         {showNewSolution ? (
-          <NewSolution id={props.match.params.id} user={props.user} />
+          <NewSolution
+            id={props.match.params.id}
+            user={props.user}
+            language={
+              hasSolution()
+                ? problem.solutions.items.filter(
+                    (solution: any) =>
+                      solution.owner === props.user.attributes.email
+                  )[0].language
+                : ""
+            }
+            code={
+              hasSolution()
+                ? problem.solutions.items.filter(
+                    (solution: any) =>
+                      solution.owner === props.user.attributes.email
+                  )[0].code
+                : ""
+            }
+            add={hasSolution() ? false : true}
+          />
         ) : props.user ? (
           <Button
             variant="contained"
