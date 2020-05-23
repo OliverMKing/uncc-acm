@@ -82,6 +82,15 @@ const Problem = (props: any) => {
     setCode(match);
   };
 
+  // Checks if user has already submitted a solution
+  const hasSolution = (): boolean => {
+    return (
+      problem.solutions.items.filter(
+        (solution: any) => solution.owner === props.user.attributes.email
+      ).length > 0
+    );
+  };
+
   return (
     <div>
       <Typography variant="h3" component="h3" align="left">
@@ -181,7 +190,7 @@ const Problem = (props: any) => {
             startIcon={<LibraryAdd />}
             onClick={addSolutionClick}
           >
-            {"Add Your Solution"}
+            {hasSolution() ? "Edit Your Solution" : "Add Your Solution"}
           </Button>
         ) : null}
       </div>
