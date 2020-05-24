@@ -5,10 +5,7 @@ import { Home, Event, ViewList, Folder } from "@material-ui/icons";
 import HomeComponent from "./App/Body/Home/Home";
 import Resources from "./App/Body/Resources/Resources";
 import Problems from "./App/Body/Problems/Problems";
-
-const Schedule: React.FC = (): JSX.Element => {
-  return <h1>Schedule</h1>;
-};
+import Schedule from "./App/Body/Schedule/Schedule";
 
 // Define and export route interface
 export interface IRoute {
