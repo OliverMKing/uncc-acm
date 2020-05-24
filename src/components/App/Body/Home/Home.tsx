@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Grid, Typography, Link } from "@material-ui/core";
@@ -26,6 +27,10 @@ const Home = (props: any): JSX.Element => {
 
   return (
     <div>
+      <Helmet>
+        <title>UNCC ACM</title>
+      </Helmet>
+
       <Typography variant="h3" component="h3" align="left">
         Association for Computing Machinery
       </Typography>

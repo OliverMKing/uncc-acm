@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import validUrl from "valid-url";
 
@@ -91,6 +92,10 @@ const NewProblem = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>UNCC ACM - New Problem</title>
+      </Helmet>
+
       <Typography variant="h3" component="h3" align="left" gutterBottom>
         New Problem
       </Typography>

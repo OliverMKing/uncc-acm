@@ -65,7 +65,6 @@ const UserActions = (props: any) => {
                 id="menu-list-grow"
                 onKeyDown={handleListKeyDown}
               >
-                <MenuItem onClick={handleLogoutClose}>Profile</MenuItem>
                 <MenuItem onClick={props.logout}>Logout</MenuItem>
               </MenuList>
             </ClickAwayListener>

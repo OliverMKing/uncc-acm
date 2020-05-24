@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 import {
   CircularProgress,
@@ -93,6 +94,10 @@ const Problem = (props: any) => {
 
   return (
     <div>
+      <Helmet>
+        <title>UNCC ACM - {problem.name}</title>
+      </Helmet>
+
       <Typography variant="h3" component="h3" align="left">
         {problem.name}
       </Typography>

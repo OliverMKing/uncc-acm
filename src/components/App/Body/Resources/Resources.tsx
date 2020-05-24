@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Typography, Link } from "@material-ui/core";
@@ -17,6 +18,10 @@ const Resources = (props: any): JSX.Element => {
 
   return (
     <div>
+      <Helmet>
+        <title>UNCC ACM - Resources</title>
+      </Helmet>
+
       <Typography variant="h3" component="h3" align="left" gutterBottom>
         Resources
       </Typography>

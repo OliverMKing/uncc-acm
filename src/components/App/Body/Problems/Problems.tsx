@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 import { Link } from "react-router-dom";
 
@@ -122,6 +123,10 @@ const Problems = (props: any) => {
 
   return (
     <div>
+      <Helmet>
+        <title>UNCC ACM - Problems</title>
+      </Helmet>
+
       <Typography variant="h3" component="h3" align="left" gutterBottom>
         Problems
       </Typography>
