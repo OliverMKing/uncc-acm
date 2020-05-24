@@ -201,6 +201,14 @@ const Problem = (props: any) => {
                   )[0].code
                 : ""
             }
+            solutionId={
+              hasSolution()
+                ? problem.solutions.items.filter(
+                    (solution: any) =>
+                      solution.owner === props.user.attributes.email
+                  )[0].id
+                : ""
+            }
             add={hasSolution() ? false : true}
           />
         ) : props.user ? (

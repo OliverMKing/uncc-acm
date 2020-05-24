@@ -25,12 +25,7 @@ enum Website {
 type Solution
   @model
   @key(name: "byProblem", fields: ["problemID"])
-  @auth(
-    rules: [
-      { allow: owner, operations: [update, delete] }
-      { allow: public, operations: [read] }
-    ]
-  ) {
+  @auth(rules: [{ allow: public, operations: [read] }]) {
   id: ID!
   language: Language!
   code: String!

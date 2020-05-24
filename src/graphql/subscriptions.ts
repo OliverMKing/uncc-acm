@@ -107,8 +107,8 @@ export const onCreateSolution = /* GraphQL */ `
   }
 `;
 export const onUpdateSolution = /* GraphQL */ `
-  subscription OnUpdateSolution($owner: String!) {
-    onUpdateSolution(owner: $owner) {
+  subscription OnUpdateSolution {
+    onUpdateSolution {
       id
       language
       code
@@ -133,8 +133,8 @@ export const onUpdateSolution = /* GraphQL */ `
   }
 `;
 export const onDeleteSolution = /* GraphQL */ `
-  subscription OnDeleteSolution($owner: String!) {
-    onDeleteSolution(owner: $owner) {
+  subscription OnDeleteSolution {
+    onDeleteSolution {
       id
       language
       code

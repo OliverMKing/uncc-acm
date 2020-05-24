@@ -142,6 +142,7 @@ export type CreateSolutionInput = {
 export type ModelSolutionConditionInput = {
   language?: ModelLanguageInput | null,
   code?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
   problemID?: ModelIDInput | null,
   and?: Array< ModelSolutionConditionInput | null > | null,
   or?: Array< ModelSolutionConditionInput | null > | null,
@@ -640,10 +641,6 @@ export type OnCreateSolutionSubscription = {
   } | null,
 };
 
-export type OnUpdateSolutionSubscriptionVariables = {
-  owner: string,
-};
-
 export type OnUpdateSolutionSubscription = {
   onUpdateSolution:  {
     __typename: "Solution",
@@ -670,10 +667,6 @@ export type OnUpdateSolutionSubscription = {
       } | null,
     } | null,
   } | null,
-};
-
-export type OnDeleteSolutionSubscriptionVariables = {
-  owner: string,
 };
 
 export type OnDeleteSolutionSubscription = {

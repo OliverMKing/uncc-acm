@@ -13,7 +13,10 @@ import {
 } from "@material-ui/core";
 
 import { API, graphqlOperation } from "aws-amplify";
-import { createSolution } from "../../../../../../graphql/mutations";
+import {
+  createSolution,
+  updateSolution,
+} from "../../../../../../graphql/mutations";
 
 const NewSolution = (props: any) => {
   const history = useHistory();
@@ -43,23 +46,45 @@ const NewSolution = (props: any) => {
     }
 
     try {
-      const request = {
-        language: language,
-        code: code,
-        problemID: props.id,
-        owner: props.user.attributes.email,
-      };
-      await API.graphql(graphqlOperation(createSolution, { input: request }));
+      if (props.add) {
+        const request = {
+          language: language,
+          code: code,
+          problemID: props.id,
+          owner: props.user.attributes.email,
+        };
+
+        await API.graphql(
+          graphqlOperation(createSolution, {
+            input: request,
+          })
+        );
+      } else {
+        const request = {
+          language: language,
+          code: code,
+          owner: props.user.attributes.email,
+          id: props.solutionId,
+        };
+
+        await API.graphql(
+          graphqlOperation(updateSolution, {
+            input: request,
+          })
+        );
+      }
+
       history.go(0);
     } catch (err) {
       console.log("Error creating Solution: ", err);
+      history.go(0);
     }
   }
 
   return (
     <div>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
-        New Solution
+        {props.add ? "New Solution" : "Edit Solution"}
       </Typography>
       <Typography variant="body1" align="left" paragraph gutterBottom>
         Please make sure your solution works before submitting. Copy and paste a
