@@ -73,6 +73,9 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       overflowX: "hidden",
       width: theme.spacing(7) + 1,
+      [theme.breakpoints.down("md")]: {
+        width: 0,
+      },
     },
     drawerList: {
       paddingTop: theme.spacing(8) + 1,
