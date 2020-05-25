@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme: Theme) =>
     logo: {
       maxHeight: 40,
       marginRight: theme.spacing(2),
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     title: {
       display: "flex",
