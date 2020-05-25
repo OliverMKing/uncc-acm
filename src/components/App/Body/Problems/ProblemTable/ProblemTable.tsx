@@ -112,7 +112,11 @@ const ProblemTable = (props: any) => {
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="body2">
-                      {problem.tags ? problem.tags.join(", ") : ""}
+                      {problem.tags
+                        ? problem.tags
+                            .map((tag: any) => tag.replace("_", " "))
+                            .join(", ")
+                        : ""}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">

@@ -55,7 +55,26 @@ const NewProblem = () => {
     setDifficulty(event.target.value);
   };
 
-  const typesList = ["Dynamic Programming", "String", "Array", "Recursion"];
+  const typesList = [
+    "String",
+    "Tree",
+    "Dynamic Programming",
+    "Array",
+    "Recursion",
+    "Greedy",
+    "Search",
+    "Graph",
+    "Stack",
+    "Hash Table",
+    "Linked List",
+    "Sliding Window",
+    "Trie",
+    "Two Pointers",
+    "Queue",
+    "Backtracking",
+    "Sort",
+    "Heap",
+  ].sort();
 
   // Upload to server
   async function uploadProblem(event: any) {
@@ -78,7 +97,7 @@ const NewProblem = () => {
       const request = {
         name: name,
         link: link,
-        tags: types,
+        tags: types.map((tag) => tag.replace(" ", "_")),
         website: website,
         difficulty: Number(difficulty),
       };

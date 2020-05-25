@@ -113,7 +113,7 @@ const Problem = (props: any) => {
             <Chip
               variant="outlined"
               color="primary"
-              label={tag}
+              label={tag.replace("_", " ")}
               style={{ marginRight: "10px" }}
             />
           );
