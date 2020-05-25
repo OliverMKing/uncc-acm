@@ -14,9 +14,22 @@ export type CreateProblemInput = {
 export enum Tag {
   String = "String",
   Tree = "Tree",
-  DynamicProgramming = "DynamicProgramming",
+  Dynamic_Programming = "Dynamic_Programming",
   Array = "Array",
   Recursion = "Recursion",
+  Greedy = "Greedy",
+  Search = "Search",
+  Graph = "Graph",
+  Stack = "Stack",
+  Hash_Table = "Hash_Table",
+  Linked_List = "Linked_List",
+  Sliding_Window = "Sliding_Window",
+  Trie = "Trie",
+  Two_Pointers = "Two_Pointers",
+  Queue = "Queue",
+  Backtracking = "Backtracking",
+  Sort = "Sort",
+  Heap = "Heap",
 }
 
 
@@ -103,8 +116,10 @@ export type ModelIntInput = {
 };
 
 export enum Language {
-  C = "C", // C#
-  Java = "Java", // C++
+  Csharp = "Csharp",
+  C = "C",
+  Cpp = "Cpp",
+  Java = "Java",
   Python = "Python",
   JavaScript = "JavaScript",
   Go = "Go",

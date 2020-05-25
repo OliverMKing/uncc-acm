@@ -11,9 +11,22 @@ type Problem @model @auth(rules: [{ allow: public, operations: [read] }]) {
 enum Tag {
   String
   Tree
-  DynamicProgramming
+  Dynamic_Programming
   Array
   Recursion
+  Greedy
+  Search
+  Graph
+  Stack
+  Hash_Table
+  Linked_List
+  Sliding_Window
+  Trie
+  Two_Pointers
+  Queue
+  Backtracking
+  Sort
+  Heap
 }
 
 enum Website {
@@ -35,9 +48,9 @@ type Solution
 }
 
 enum Language {
-  "C#"
+  Csharp
   C
-  "C++"
+  Cpp
   Java
   Python
   JavaScript
