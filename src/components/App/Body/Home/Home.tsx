@@ -171,6 +171,9 @@ const Home = (props: any): JSX.Element => {
             <Email color="primary" />
           </Link>
         </Grid>
+        <Grid item xs={9} md={4}>
+          <Typography>Faculty Advisor — Erik Saule</Typography>
+        </Grid>
       </Grid>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
         Contact Us

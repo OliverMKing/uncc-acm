@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 
 import { Typography, Link } from "@material-ui/core";
 
+import PastEvents from "./PastEvents/PastEvents";
+
 // Need to render iframes like this
 const smallCalendar =
   '<iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=dW5jYy5lZHVfdm9hdGdmcDVqbzhkaGVzNHFsbXF0bjMxYzRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH" style="border:solid 1px #777" width="96%" height="500" frameborder="0" scrolling="no"></iframe>';
@@ -68,10 +70,14 @@ const Schedule = () => {
       <Typography variant="h4" component="h4" align="left" gutterBottom>
         Calendar
       </Typography>
+      <Typography variant="body1" align="left" gutterBottom paragraph>
+        Click the event on the calendar for more information.
+      </Typography>
       <Iframe iframe={smallCalendar} />,
       <Typography variant="h4" component="h4" align="left" gutterBottom>
         Past Events
       </Typography>
+      <PastEvents />
     </div>
   );
 };
