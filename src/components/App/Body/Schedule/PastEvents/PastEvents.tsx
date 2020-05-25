@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   ExpansionPanel,
@@ -19,10 +19,26 @@ import Team2_2018 from "../../../../../images/ICPC/2018Team2.jpg";
 import Team3_2018 from "../../../../../images/ICPC/2018Team3.jpg";
 import Team4_2018 from "../../../../../images/ICPC/2018Team4.jpg";
 
+import FocusedPicture from "./FocusedPicture/FocusedPicture";
+
 // Define events here as components
 const ICPC2019 = () => {
+  const [focusedPic, setFocusedPic] = useState(Team1_2019);
+  const [focus, setFocus] = useState(false);
+
+  const handleClose = () => {
+    setFocus(false);
+  };
+
   return (
     <div>
+      <FocusedPicture
+        picture={focusedPic}
+        // eslint-disable-next-line no-restricted-globals
+        focus={focus}
+        close={handleClose}
+      />
+
       <Typography variant="body1" align="left" gutterBottom paragraph>
         All our teams had a great showing by completeing at least three
         problems. Our top team placed 14th out of 160 teams.
@@ -33,6 +49,10 @@ const ICPC2019 = () => {
             src={Team1_2019}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team1_2019);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -40,6 +60,10 @@ const ICPC2019 = () => {
             src={Team2_2019}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team2_2019);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -47,6 +71,10 @@ const ICPC2019 = () => {
             src={Team3_2019}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team3_2019);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -54,6 +82,10 @@ const ICPC2019 = () => {
             src={Team4_2019}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team4_2019);
+              setFocus(true);
+            }}
           />
         </Grid>
       </Grid>
@@ -62,14 +94,32 @@ const ICPC2019 = () => {
 };
 
 const ICPC2018 = () => {
+  const [focusedPic, setFocusedPic] = useState(Team1_2019);
+  const [focus, setFocus] = useState(false);
+
+  const handleClose = () => {
+    setFocus(false);
+  };
+
   return (
     <div>
+      <FocusedPicture
+        picture={focusedPic}
+        // eslint-disable-next-line no-restricted-globals
+        focus={focus}
+        close={handleClose}
+      />
+
       <Grid container spacing={1}>
         <Grid item xs={6}>
           <img
             src={Team1_2018}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team1_2018);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -77,6 +127,10 @@ const ICPC2018 = () => {
             src={Team2_2018}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team2_2018);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -84,6 +138,10 @@ const ICPC2018 = () => {
             src={Team3_2018}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team3_2018);
+              setFocus(true);
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -91,6 +149,10 @@ const ICPC2018 = () => {
             src={Team4_2018}
             style={{ width: "100%" }}
             alt="2019 ICPC Team"
+            onClick={() => {
+              setFocusedPic(Team4_2018);
+              setFocus(true);
+            }}
           />
         </Grid>
       </Grid>
