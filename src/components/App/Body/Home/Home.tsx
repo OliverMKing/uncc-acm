@@ -172,7 +172,7 @@ const Home = (props: any): JSX.Element => {
           </Link>
         </Grid>
         <Grid item xs={9} md={4}>
-          <Typography>Faculty Advisor — Erik Saule</Typography>
+          <Typography gutterBottom>Faculty Advisor — Erik Saule</Typography>
         </Grid>
       </Grid>
       <Typography variant="h4" component="h4" align="left" gutterBottom>

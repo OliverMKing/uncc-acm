@@ -18,9 +18,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     left: {
       textAlign: "left",
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
     },
     right: {
       textAlign: "right",
+      [theme.breakpoints.down("xs")]: {
+        textAlign: "center",
+      },
     },
   })
 );
@@ -31,12 +37,12 @@ const Footer = () => {
   return (
     <div className={classes.footer}>
       <Grid container justify="space-between">
-        <Grid item xs={6}>
+        <Grid item xs={false} sm={6}>
           <Typography variant="subtitle1" className={classes.left} gutterBottom>
             Important Links
           </Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Typography
             variant="subtitle1"
             className={classes.right}
@@ -45,7 +51,7 @@ const Footer = () => {
             Parent Organizations
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={false} sm={4}>
           <Typography variant="body2" className={classes.left}>
             <Link
               href="https://discord.com/invite/JqrPUEn"
@@ -56,7 +62,7 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <Typography variant="body2" className={classes.right}>
             <Link
               href="https://www.uncc.edu/"
@@ -67,7 +73,7 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={false} sm={4}>
           <Typography variant="body2" className={classes.left}>
             <Link
               href="https://ninerengage.uncc.edu/organization/acm"
@@ -78,7 +84,7 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <Typography variant="body2" className={classes.right}>
             <Link
               href="https://cci.uncc.edu/"
@@ -89,7 +95,7 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={false} sm={4}>
           <Typography variant="body2" className={classes.left}>
             <Link
               href="mailto:acm-uncc@uncc.edu"
@@ -100,7 +106,7 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <Typography variant="body2" className={classes.right}>
             <Link
               href="https://www.acm.org/"

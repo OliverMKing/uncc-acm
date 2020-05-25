@@ -40,8 +40,8 @@ const ICPC2019 = () => {
       />
 
       <Typography variant="body1" align="left" gutterBottom paragraph>
-        All our teams had a great showing by completeing at least three
-        problems. Our top team placed 14th out of 160 teams.
+        All our teams had a great showing by completing at least three problems.
+        Our top team placed 14th out of 160 teams.
       </Typography>
       <Grid container spacing={1}>
         <Grid item xs={6}>
