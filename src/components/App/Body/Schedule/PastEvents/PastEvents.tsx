@@ -47,7 +47,7 @@ const ICPC2019 = () => {
         <Grid item xs={6}>
           <img
             src={Team1_2019}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team1_2019);
@@ -58,7 +58,7 @@ const ICPC2019 = () => {
         <Grid item xs={6}>
           <img
             src={Team2_2019}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team2_2019);
@@ -69,7 +69,7 @@ const ICPC2019 = () => {
         <Grid item xs={6}>
           <img
             src={Team3_2019}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team3_2019);
@@ -80,7 +80,7 @@ const ICPC2019 = () => {
         <Grid item xs={6}>
           <img
             src={Team4_2019}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team4_2019);
@@ -114,7 +114,7 @@ const ICPC2018 = () => {
         <Grid item xs={6}>
           <img
             src={Team1_2018}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team1_2018);
@@ -125,7 +125,7 @@ const ICPC2018 = () => {
         <Grid item xs={6}>
           <img
             src={Team2_2018}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team2_2018);
@@ -136,7 +136,7 @@ const ICPC2018 = () => {
         <Grid item xs={6}>
           <img
             src={Team3_2018}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team3_2018);
@@ -147,7 +147,7 @@ const ICPC2018 = () => {
         <Grid item xs={6}>
           <img
             src={Team4_2018}
-            style={{ width: "100%" }}
+            style={{ width: "100%", cursor: "zoom-in" }}
             alt="2019 ICPC Team"
             onClick={() => {
               setFocusedPic(Team4_2018);
