@@ -106,13 +106,33 @@ const Problems = (props: any) => {
   const [types, setTypes] = useState<String[]>([]);
 
   const handleTypesChange = (event: any, newValues: String | String[]) => {
-    setTypes(newValues as String[]);
+    const values = newValues as String[];
+    setTypes(values.map((value: any) => value.replace(" ", "_")));
   };
 
   // Filter by website, difficulty, category
   const websitesList = ["Leetcode", "Kattis", "HackerRank"];
 
-  const typesList = ["Dynamic Programming", "String", "Array", "Recursion"];
+  const typesList = [
+    "String",
+    "Tree",
+    "Dynamic_Programming",
+    "Array",
+    "Recursion",
+    "Greedy",
+    "Search",
+    "Graph",
+    "Stack",
+    "Hash_Table",
+    "Linked_List",
+    "Sliding_Window",
+    "Trie",
+    "Two_Pointers",
+    "Queue",
+    "Backtracking",
+    "Sort",
+    "Heap",
+  ];
 
   // Reset filters
   const resetFilters = () => {
@@ -230,7 +250,7 @@ const Problems = (props: any) => {
                   id="Type"
                   value={types}
                   onChange={handleTypesChange}
-                  options={typesList}
+                  options={typesList.map((type) => type.replace("_", " "))}
                   renderInput={(params) => (
                     <TextField {...params} variant="standard" />
                   )}
