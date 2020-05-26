@@ -12,8 +12,21 @@ import {
   TableCell,
   TablePagination,
 } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    smallHidden: {
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
+    },
+  })
+);
 
 const ProblemTable = (props: any) => {
+  const classes = useStyles();
+
   // Pagination state
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -85,7 +98,9 @@ const ProblemTable = (props: any) => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell align="right">Website</TableCell>
-              <TableCell align="right">Types</TableCell>
+              <TableCell align="right" className={classes.smallHidden}>
+                Types
+              </TableCell>
               <TableCell align="right">Difficulty</TableCell>
             </TableRow>
           </TableHead>
@@ -110,7 +125,7 @@ const ProblemTable = (props: any) => {
                       </Typography>
                     </Link>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="right" className={classes.smallHidden}>
                     <Typography variant="body2">
                       {problem.tags
                         ? problem.tags
