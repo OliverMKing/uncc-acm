@@ -36,7 +36,7 @@ function App(): JSX.Element {
       .then((user) => {
         setUser(user);
       })
-      .catch(() => console.log("Not signed in"));
+      .catch(() => {});
   });
 
   // Lets people log in with Google
