@@ -105,9 +105,9 @@ const NewSolution = (props: any) => {
             onChange={handleLanguageChange}
             required
           >
-            <MenuItem value={"C#"}>C#</MenuItem>
+            <MenuItem value={"Csharp"}>C#</MenuItem>
             <MenuItem value={"C"}>C</MenuItem>
-            <MenuItem value={"C++"}>C++</MenuItem>
+            <MenuItem value={"Cpp"}>C++</MenuItem>
             <MenuItem value={"Java"}>Java</MenuItem>
             <MenuItem value={"JavaScript"}>JavaScript</MenuItem>
             <MenuItem value={"Go"}>Go</MenuItem>
