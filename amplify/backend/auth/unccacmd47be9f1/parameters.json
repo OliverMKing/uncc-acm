@@ -36,5 +36,5 @@
   "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
   "userPoolGroupList": [],
   "dependsOn": [],
-  "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.d3p9pqi5ijrlfw.amplifyapp.com/\",\"https://master.d3p9pqi5ijrlfw.amplifyapp.com/\"],\"LogoutURLs\":[\"https://master.d3p9pqi5ijrlfw.amplifyapp.com/\"]}"
+  "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.d3p9pqi5ijrlfw.amplifyapp.com/\"],\"LogoutURLs\":[\"https://master.d3p9pqi5ijrlfw.amplifyapp.com/\"]}"
 }
