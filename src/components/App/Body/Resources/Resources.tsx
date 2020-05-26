@@ -121,6 +121,15 @@ const Resources = (props: any): JSX.Element => {
               GeeksforGeeks
             </Link>
           </li>
+          <li>
+            <Link
+              href="https://missing.csail.mit.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              The Missing Semester of Your CS Education
+            </Link>
+          </li>
         </ul>
       </Typography>
       <Typography variant="h4" component="h4" align="left" gutterBottom>
