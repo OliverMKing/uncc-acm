@@ -21,10 +21,11 @@ import NewSolution from "./NewSolution/NewSolution";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { xcode } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
+// Lets the code highlighter highlight correctly
 var highlighterLangDict = new Map<string, string>();
-highlighterLangDict.set("C#", "csp");
+highlighterLangDict.set("Csharp", "csp");
 highlighterLangDict.set("C", "cs");
-highlighterLangDict.set("C++", "cpp");
+highlighterLangDict.set("Cpp", "cpp");
 highlighterLangDict.set("Java", "java");
 highlighterLangDict.set("Python", "python");
 highlighterLangDict.set("JavaScript", "javascript");
@@ -36,6 +37,11 @@ highlighterLangDict.set("Rust", "rust");
 highlighterLangDict.set("Swift", "swift");
 highlighterLangDict.set("Scala", "scala");
 highlighterLangDict.set("PHP", "php");
+
+// Displays name of code with special characters
+var displayLangDict = new Map<string, string>();
+displayLangDict.set("Csharp", "C#");
+displayLangDict.set("Cpp", "C++");
 
 const Problem = (props: any) => {
   const [problem, setProblem] = useState<any>(null);
@@ -154,9 +160,11 @@ const Problem = (props: any) => {
         >
           {problem.solutions.items.map((solution: any) => {
             return (
-              <MenuItem
-                value={solution.id}
-              >{`${solution.language} solution by ${solution.owner}`}</MenuItem>
+              <MenuItem value={solution.id}>{`${
+                displayLangDict.has(solution.language)
+                  ? displayLangDict.get(solution.language)
+                  : solution.language
+              } solution by ${solution.owner}`}</MenuItem>
             );
           })}
         </Select>
